@@ -5,9 +5,11 @@
     <title>Gel birlikte hikaye yazalım!</title>
 </head>
 <body>
-{% for post in post_list %}
-    {{ post.title }}<br>
-{% endfor %}
-{% debug %}
+<h1>Hikayeler</h1>
+<ul>
+    {% for post in post_list %}
+        <li>{{ post.title }}</li>
+    {% endfor %}
+</ul>
 </body>
 </html>
