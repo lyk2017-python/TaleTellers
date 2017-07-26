@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ object.title }}</title>
 </head>
 <body>
+{% for story in story_list  %}
+{{ story.content }} <br>
+{% endfor %}
 
+{% if object.children.exists %}
+    {% for child in object.children.all %}
+        <a href="{% url 'story_detail' pk=child.pk %}">#{{ child.id }}</a> <br>
+    {% endfor %}
+{% endif %}
 </body>
 </html>
