@@ -8,7 +8,7 @@
 <h1>Hikayeler</h1>
 <ul>
     {% for post in post_list %}
-        <li>{{ post.title }}</li>
+    <li><a href="{% url 'story_detail' pk=post.pk %}">{{ post.title }}</a></li>
     {% endfor %}
 </ul>
 </body>
