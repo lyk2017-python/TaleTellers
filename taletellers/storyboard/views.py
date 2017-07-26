@@ -6,11 +6,27 @@ from storyboard.models import Post
 
 class HomeView(generic.ListView):
     def get_queryset(self):
-        return Post.objects.filter(parent=None)
+        return Post.objects.filter(parent__isnull=True)
 
 
-class StoryView(generic.ListView):
-    pass
+class StoryView(generic.DetailView):
+    model = Post
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        story = context["object"]
+        story_list = []
+        while story.parent is not None:
+            story_list.append(story)
+            story = story.parent
+        else:
+            story_list.append(story)
+        story_list.reverse()
+        context["story_list"] = story_list
+        return context
+
+
+        return context
 
 
 class SSSView(generic.TemplateView):
