@@ -6,7 +6,7 @@ class Post(models.Model):
     both. If a post has a title, that post must be parent of other posts. Content posts must be
     child of title posts."""
     title = models.CharField(max_length=100, blank=True, null=True)     # unique=True might be added
-    content = models.CharField(max_length=140, blank=True, null=True)
+    content = models.CharField(max_length=140)
     creation_time = models.DateTimeField(auto_now_add=True)
     score = models.IntegerField(default=0)
     parent = models.ForeignKey("self", blank=True, null=True, related_name="children")
