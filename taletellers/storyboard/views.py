@@ -6,6 +6,12 @@ from storyboard.models import Post
 
 class HomeView(generic.ListView):
     model = Post
+    # def get_queryset(self):
+    #     return Post.objects.filter(parent=False)
+
+
+class StoryView(generic.ListView):
+    pass
 
 """
 class KategoriView(generic.DetailView):

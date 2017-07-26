@@ -19,5 +19,5 @@ from storyboard.urls import urlpatterns as story_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r"^/", include(story_urls)),
+    url(r"^", include(story_urls)),
 ]
