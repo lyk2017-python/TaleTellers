@@ -13,6 +13,10 @@ class HomeView(generic.ListView):
 class StoryView(generic.ListView):
     pass
 
+
+class SSSView(generic.TemplateView):
+    template_name = "storyboard/sss.html"
+
 """
 class KategoriView(generic.DetailView):
     def get_queryset(self):
@@ -23,8 +27,5 @@ class DetayView(generic.DetayView):
     def get_queryset(self):
         return Category.objects.filter(report_count=0)
         
-        
-class SSSView(generic.TemplateView):
-    template_name = "blog/sss.html"
-
 """
+
