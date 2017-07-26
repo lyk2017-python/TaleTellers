@@ -5,9 +5,8 @@ from storyboard.models import Post
 
 
 class HomeView(generic.ListView):
-    model = Post
-    # def get_queryset(self):
-    #     return Post.objects.filter(parent=False)
+    def get_queryset(self):
+        return Post.objects.filter(parent=None)
 
 
 class StoryView(generic.ListView):

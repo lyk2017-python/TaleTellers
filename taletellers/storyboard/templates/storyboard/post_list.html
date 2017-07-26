@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Gel birlikte hikaye yazalım!</title>
 </head>
 <body>
-
+{% for post in post_list %}
+    {{ post.title }}<br>
+{% endfor %}
+{% debug %}
 </body>
 </html>
