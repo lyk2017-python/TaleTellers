@@ -2,7 +2,10 @@ from django.db import models
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=100, blank=True, null=True)         # unique=True might be added
+    """This class arranges user posts. A post might contain a title or content but it can't contain
+    both. If a post has a title, that post must be parent of other posts. Content posts must be
+    child of title posts."""
+    title = models.CharField(max_length=100, blank=True, null=True)     # unique=True might be added
     content = models.CharField(max_length=140, blank=True, null=True)
     creation_time = models.DateTimeField(auto_now_add=True)
     score = models.IntegerField(default=0)
