@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <title>Gel birlikte hikaye yazalım!</title>
 </head>
+<h1>Taze Hikayeler</h1>
 <body>
+
 <h1>Hikayeler</h1>
 <ul>
     {% for post in post_list %}
     <li><a href="{% url 'story_detail' pk=post.pk %}">{{ post.title }}</a></li>
     {% endfor %}
+
 </ul>
 </body>
 </html>
