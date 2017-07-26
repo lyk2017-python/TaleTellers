@@ -26,9 +26,6 @@ class StoryView(generic.DetailView):
         return context
 
 
-        return context
-
-
 class SSSView(generic.TemplateView):
     template_name = "storyboard/sss.html"
 
