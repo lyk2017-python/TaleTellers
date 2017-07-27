@@ -7,6 +7,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ["id", "title", "content", "creation_time", "parent"]
     search_fields = ["title", "content"]
     list_filter = ["creation_time", "title"]
+    readonly_fields = ["creation_time"]
     fieldsets = [
         (
             "Globals", {
@@ -20,6 +21,7 @@ class PostAdmin(admin.ModelAdmin):
             "Others", {
                 "fields": [
                     "score",
+                    "creation_time",
                     "parent"
                 ]
             }
