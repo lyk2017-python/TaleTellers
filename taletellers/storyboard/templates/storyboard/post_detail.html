@@ -2,17 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ object.title }}</title>
 </head>
 <body>
 {% for story in story_list  %}
-{{ story.content }} <br>
+    {% if story.title %}
+    <title>{{ story.title | title}}</title>
+        <h2>{{ story.title|title }}</h2>
+    {% endif %}
+    {{ story.content }} <br>
 {% endfor %}
 
-{% if object.children.exists %}
-    {% for child in object.children.all %}
-        <a href="{% url 'story_detail' pk=child.pk %}">#{{ child.id }}</a> <br>
-    {% endfor %}
-{% endif %}
+{% for child in object.children.all %}
+    <a href="{% url 'story_detail' pk=child.pk %}">#{{ child.id }}</a> <br>
+{% empty %}
+<p><b><--Şimdilik Son--></b></p>
+{% endfor %}
+
 </body>
 </html>
