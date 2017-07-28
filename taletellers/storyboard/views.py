@@ -1,6 +1,7 @@
 from django.views import generic
 from django.shortcuts import render
 
+from storyboard.forms import ContentForm
 from storyboard.models import Post
 
 
@@ -9,8 +10,18 @@ class HomeView(generic.ListView):
         return Post.objects.filter(parent__isnull=True)
 
 
-class StoryView(generic.DetailView):
-    model = Post
+class StoryView(generic.CreateView):
+    form_class = ContentForm
+    template_name = "storyboard/post_detail.html"
+    success_url = "."
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        if self.request.method in ["POST", "PUT"]:
+            post_data = kwargs["data"].copy()
+            post_data["title"] = [self.get_context_data()["story_list"][0]]
+            kwargs["data"] = post_data
+        return kwargs
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
