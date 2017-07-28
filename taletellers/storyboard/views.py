@@ -1,7 +1,6 @@
 from django.http import Http404
 from django.views import generic
 from storyboard.forms import ContentForm, ContactForm
-from storyboard.models import Post
 from django.shortcuts import render
 
 from storyboard.models import Post
@@ -39,8 +38,8 @@ class StoryView(generic.DetailView):
 """
 
 
-class ContactFormView(generic.CreateView):
-    form_class = ContentForm
+class ContactFormView(generic.FormView):
+    form_class = ContactForm
     template_name = "storyboard/contact.html"
     success_url = "/"
 
@@ -54,9 +53,8 @@ class ContactFormView(generic.CreateView):
              "{}\n"
              "---\n"
              "email={}\n"
-             "ip={}").format(data["message"], data["email"], data["ip"]),
-            "noreply@taletellers.com",
-           """ settings.DEFAULT_FROM_EMAIL,"""
+             "ip={}").format(data["message"], data["email"], self.request.META["REMOTE_ADDR"]),
+            settings.DEFAULT_FROM_EMAIL,
             ["busra@taletellers.com"]
         )
         return super().form_valid(form)

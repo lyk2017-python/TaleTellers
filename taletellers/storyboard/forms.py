@@ -20,5 +20,5 @@ class ContentForm(forms.ModelForm):
 class ContactForm(forms.Form):
     email = forms.EmailField()
     title = forms.CharField(max_length=100)
-    message = forms.CharField(widget=forms.Textarea(attrs={"rows": 5}))
-    ip = forms.GenericIPAddressField(widget=forms.HiddenInput())
+    message = forms.CharField(widget=forms.Textarea(attrs={"rows": 3}))
+    #ip = forms.GenericIPAddressField(widget=forms.HiddenInput())
