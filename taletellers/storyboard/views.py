@@ -1,7 +1,11 @@
+from django.http import Http404
 from django.views import generic
+from storyboard.forms import ContentForm, ContactForm
+from storyboard.models import Post
 from django.shortcuts import render
 
 from storyboard.models import Post
+from django.core.mail import send_mail
 
 
 class HomeView(generic.ListView):
@@ -9,6 +13,14 @@ class HomeView(generic.ListView):
         return Post.objects.filter(parent__isnull=True)
 
 
+class StoryView(generic.CreateView):
+    form_class = ContentForm
+    template_name = "storyboard/post_detail.html"
+    success_url = "."
+
+
+
+"""
 class StoryView(generic.DetailView):
     model = Post
 
@@ -24,6 +36,30 @@ class StoryView(generic.DetailView):
         story_list.reverse()
         context["story_list"] = story_list
         return context
+"""
+
+
+class ContactFormView(generic.CreateView):
+    form_class = ContentForm
+    template_name = "storyboard/contact.html"
+    success_url = "/"
+
+    def form_valid(self, form):
+        data = form.cleaned_data
+        from django.conf import settings
+        send_mail(
+            "TaleTellers ContactForm : {}".format(data["title"]),
+            ("Bir bildiriminiz var\n"
+             "---\n"
+             "{}\n"
+             "---\n"
+             "email={}\n"
+             "ip={}").format(data["message"], data["email"], data["ip"]),
+            "noreply@taletellers.com",
+           """ settings.DEFAULT_FROM_EMAIL,"""
+            ["busra@taletellers.com"]
+        )
+        return super().form_valid(form)
 
 
 class SSSView(generic.TemplateView):
