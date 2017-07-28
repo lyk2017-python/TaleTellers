@@ -13,10 +13,7 @@ class Post(models.Model):
 
     def __str__(self):
         # returns the id and the title of the Post class's objects when it's requested on manage.py's shell
-        if self.title:
-            return "#{0} Story Title: {1}".format(self.id, self.title)
-        if self.parent:
-            return "#{0} Comment: {1}".format(self.id, self.content)
+        return "#{0} {1}".format(self.id, self.title)
 
     class Meta:
         get_latest_by = "creation_time"
