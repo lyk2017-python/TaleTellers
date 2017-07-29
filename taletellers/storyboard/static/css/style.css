@@ -27,3 +27,7 @@ li .nav_option {
     margin-top: 100px;
     width: auto;
 }
+
+ul {
+    list-style-type: none;
+}
