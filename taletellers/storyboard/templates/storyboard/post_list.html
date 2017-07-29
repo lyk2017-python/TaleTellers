@@ -3,7 +3,7 @@
 {% block content %}
     <h2>Hikayeler</h2>
     <ul>
-        {% for post in post_list|dictsortreversed:"id" %}
+        {% for post in post_list %}
             <li><a href="{% url 'story_detail' pk=post.pk %}">{{ post.title|title}}</a>
                 {{ post.creation_time|date:"[t M y, D]" }}
                 Puan: {{ post.score }}
