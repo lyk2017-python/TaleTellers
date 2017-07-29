@@ -12,15 +12,15 @@ class HomeView(generic.ListView):
 
 
 class StoryView(generic.CreateView):
-    form_class = ContactForm
-    template_name = "storyboard/post_detail.html"
+    form_class = StoryAddForm
+    template_name = "storyboard/post_list.html"
     success_url = "."
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         if self.request.method in ["POST", "PUT"]:
             post_data = kwargs["data"].copy()
-            post_data["title"] = [self.get_context_data()["story_list"][0]]
+            post_data["title"] = self.story_list
             kwargs["data"] = post_data
         return kwargs
 
