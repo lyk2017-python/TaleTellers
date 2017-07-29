@@ -64,6 +64,7 @@ class AddStoryFormView(generic.CreateView):
     """
     form_class = AddStoryForm
     template_name = "storyboard/post_add.html"
+    success_url = "."
 
     def get_context_data(self, **kwargs):
         """
