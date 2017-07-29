@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Gel birlikte hikaye yazalım!</title>
-</head>
-<body>
-<h1>Hikayeler</h1>
-<ul>
-    {% for post in post_list|dictsortreversed:"id" %}
-    <li><a href="{% url 'story_detail' pk=post.pk %}">{{ post.title|title}}</a>
-        {{ post.creation_time|date:"[t M y, D]" }}
-        <p>{{ post.content|truncatewords:4 }}</p></li>
-    {% endfor %}
-</ul>
-
+{% extends "storyboard/base.html" %}
+{% block content %}
+    <h2>Hikayeler</h2>
+    <ul>
+        {% for post in post_list|dictsortreversed:"id" %}
+            <li><a href="{% url 'story_detail' pk=post.pk %}">{{ post.title|title}}</a>
+            {{ post.creation_time|date:"[t M y, D]" }}
+            <p>{{ post.content|truncatewords:5 }}</p></li>
+        {% endfor %}
+    </ul>
 <a href="{% url 'contact' %}">İletişim</a>
-</body>
-</html>
+{% endblock %}

@@ -1,25 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
-<h1>{{story_list.0.title}}</h1>
+{% extends "storyboard/base.html" %}
+{% block content %}
+<h2>{{story_list.0.title}}</h2>
 <ul>
 {% for story in story_list  %}
     <li>{{ story.content|title }}</li>
 {% endfor %}
 </ul>
+
 {% for child in object.children.all %}
     <a href="{% url 'story_detail' pk=child.pk %}">#{{ child.id }}</a> <br>
 {% empty %}
 <p><--SON--></p>
 {% endfor %}
 <hr>
+
 <form action="." method="POST">
     {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Gönder</button>
+    <table>
+        {{form.as_p}}
+    </table>
+    <button type="submit">
+        Gönder
+    </button>
 </form>
-</body>
-</html>
+{% endblock %}
