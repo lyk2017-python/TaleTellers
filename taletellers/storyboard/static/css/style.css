@@ -5,22 +5,21 @@ nav {
     background-color: #2373B1 !important;
 }
 
-.active a{
+/*aktif olan nav optionun rengini degistiriyor*/
+.active a {
     background-color: #1DABA1 !important;
 }
 
-li a:hover {
-  background-color: #1DABA1 !important;
+.nav_option {
+    margin-right: 15px;
 }
 
-li .nav_option {
-  color: #FFF;  !important;
-  list-style-type: none;
-  margin-right: 15px;
+.nav_option:hover {
+    background-color: #1DABA1 !important;
 }
 
 #nav_ul {
-  float: right;
+    float: right;
 }
 
 .under_navbar {
@@ -30,4 +29,10 @@ li .nav_option {
 
 ul {
     list-style-type: none;
+}
+
+#home {
+    margin-left: 40px;
+    font-size: x-large;
+    color: #FFFFFF;
 }
