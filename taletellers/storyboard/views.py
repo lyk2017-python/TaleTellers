@@ -9,11 +9,11 @@ from storyboard.models import Post
 
 class HomeView(generic.ListView):
     def get_queryset(self):
-        return Post.objects.filter(parent__isnull=True)
+        return Post.objects.filter(parent__isnull=True).order_by("-score")
 
 
-class AddContentView(generic.CreateView):
-    form_class = ContentForm
+class AddContentFormView(generic.CreateView):
+    form_class = AddContentForm
     template_name = "storyboard/post_detail.html"
 
     def get_success_url(self):
@@ -34,8 +34,8 @@ class AddContentView(generic.CreateView):
         return context
 
 
-class StoryView(generic.CreateView):
-    form_class = StoryForm
+class AddStoryFormView(generic.CreateView):
+    form_class = AddStoryForm
     template_name = "storyboard/post_add.html"
 
     def get_success_url(self):

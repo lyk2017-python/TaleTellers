@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Gel birlikte hikaye yazalım!</title>
-</head>
-<body>
-<h1>Hikayeler</h1>
+{% extends "storyboard/base.html" %}
+
+{% block content %}
 <ul>
     {% for post in post_list|dictsortreversed:"id" %}
     <li><a href="{% url 'story_detail' pk=post.pk %}">{{ post.title|title}}</a>
@@ -14,13 +9,10 @@
     {% endfor %}
 </ul>
 <hr>
+
 <form action="." method="POST">
     {% csrf_token %}
     {{form.as_p}}
     <button type="submit">Gönder</button>
 </form>
-
-
-<a href="{% url 'contact' %}">İletişim</a>
-</body>
-</html>
+{% endblock %}
