@@ -1,4 +1,5 @@
 {% extends "storyboard/base.html" %}
+
 {% block content %}
 <h2>{{story_list.0.title}}</h2>
 <ul>
@@ -16,11 +17,7 @@
 
 <form action="." method="POST">
     {% csrf_token %}
-    <table>
-        {{form.as_p}}
-    </table>
-    <button type="submit">
-        Gönder
-    </button>
+    {{form.as_p}}
+    <button type="submit">Gönder</button>
 </form>
 {% endblock %}
