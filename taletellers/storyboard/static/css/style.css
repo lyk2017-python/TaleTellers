@@ -1,0 +1,29 @@
+/*https://codepen.io/yavuzovski/pen/XKjjdV*/
+
+nav {
+    padding: 20px;
+    background-color: #2373B1 !important;
+}
+
+.active a{
+    background-color: #1DABA1 !important;
+}
+
+li a:hover {
+  background-color: #1DABA1 !important;
+}
+
+li .nav_option {
+  color: #FFF;  !important;
+  list-style-type: none;
+  margin-right: 15px;
+}
+
+#nav_ul {
+  float: right;
+}
+
+.under_navbar {
+    margin-top: 100px;
+    width: auto;
+}
