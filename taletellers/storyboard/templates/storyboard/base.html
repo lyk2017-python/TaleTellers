@@ -22,9 +22,9 @@
         </div>
         <ul class="nav navbar-nav" id="nav_ul">
             <!--Section ID'ler duzenlenecek.-->
-            <li><a href="/story" class="nav_option" style="color: #FFF">NEW STORY</a></li>
-            <li><a href="#port_s" class="nav_option" style="color: #FFF">PORTFOLIO</a></li>
-            <li><a href="/contact" class="nav_option" style="color: #FFF">CONTACT</a></li>
+            <li><a href="{% url 'add_story' %}" class="nav_option" style="color: #FFF">NEW STORY</a></li>
+            <li><a href="{% url 'faq' %}" class="nav_option" style="color: #FFF">FAQ</a></li>
+            <li><a href="{% url 'contact' %}" class="nav_option" style="color: #FFF">CONTACT</a></li>
         </ul>
     </div>
 </nav>
