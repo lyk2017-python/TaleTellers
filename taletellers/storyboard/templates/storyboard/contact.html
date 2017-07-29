@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "storyboard/base.html" %}
+{% block content %}
     <form action="." method="POST">
         {% csrf_token %}
         <table>
@@ -12,5 +7,4 @@
         </table>
         <button type="submit">Save</button>
     </form>
-</body>
-</html>
+{% endblock %}
