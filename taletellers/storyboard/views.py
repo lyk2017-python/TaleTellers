@@ -15,17 +15,9 @@ class StoryView(generic.CreateView):
     template_name = "storyboard/post_detail.html"
     success_url = "."
 
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        if self.request.method in ["POST", "PUT"]:
-            post_data = kwargs["data"].copy()
-            post_data["title"] = [self.get_context_data()["story_list"][0]]
-            kwargs["data"] = post_data
-        return kwargs
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        story = context["object"]
+    def get_parent(self):
+        story = Post.objects.filter(title__isnull=True)
+        print(story, type(story))
         story_list = []
         while story.parent is not None:
             story_list.append(story)
@@ -33,7 +25,19 @@ class StoryView(generic.CreateView):
         else:
             story_list.append(story)
         story_list.reverse()
-        context["story_list"] = story_list
+        return story_list
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        if self.request.method in ["POST", "PUT"]:
+            post_data = kwargs["data"].copy()
+            post_data["title"] = [self.get_parent()]
+            kwargs["data"] = post_data
+        return kwargs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["story_list"] = self.get_parent()
         return context
 
 
