@@ -13,6 +13,13 @@
         <p>{{ post.content|truncatewords:4 }}</p></li>
     {% endfor %}
 </ul>
+<hr>
+<form action="." method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Gönder</button>
+</form>
+
 
 <a href="{% url 'contact' %}">İletişim</a>
 </body>

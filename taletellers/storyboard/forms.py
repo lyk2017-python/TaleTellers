@@ -16,3 +16,8 @@ class ContentForm(forms.ModelForm):
         exclude = ["id", "score", "title"]
         widgets = {"parent": HiddenInput()}
 
+
+class StoryForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        exclude = ["id", "score", "parent"]
