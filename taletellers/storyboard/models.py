@@ -15,6 +15,19 @@ class Post(models.Model):
         # returns the id and the title of the Post class's objects when it's requested on manage.py's shell
         return "#{0} {1}".format(self.id, self.title)
 
+    def get_parents(self, exclude_self=False):
+        story = self
+        story_list = []
+        while story.parent is not None:
+            story_list.append(story)
+            story = story.parent
+        else:
+            story_list.append(story)
+        story_list.reverse()
+        if exclude_self:
+            story_list.pop(-1)
+        return story_list
+
     class Meta:
         get_latest_by = "creation_time"
         unique_together = ("content", "parent")

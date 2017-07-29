@@ -7,5 +7,5 @@ from storyboard.models import Post
 class ContentForm(forms.ModelForm):
     class Meta:
         model = Post
-        exclude = ["id", "score", ]
+        exclude = ["id", "score", "title"]
         widgets = {"parent": HiddenInput()}
