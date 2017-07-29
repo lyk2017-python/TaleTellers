@@ -1,11 +1,13 @@
 {% extends "storyboard/base.html" %}
 {% block content %}
-    <h2>Hikayeler</h2>
+    <h2 style="text-align: center">Son Eklenen Hikayeler</h2>
+    <div class="container">
     <ul>
         {% for post in post_list|dictsortreversed:"id" %}
-            <li><a href="{% url 'story_detail' pk=post.pk %}">{{ post.title|title}}</a>
+        <li><a href="{% url 'story_detail' pk=post.pk %}" style="font-size: x-large">{{ post.title|title }}</a>
             {{ post.creation_time|date:"[t M y, D]" }}
             <p>{{ post.content|truncatewords:5 }}</p></li>
         {% endfor %}
     </ul>
+    </div>
 {% endblock %}
