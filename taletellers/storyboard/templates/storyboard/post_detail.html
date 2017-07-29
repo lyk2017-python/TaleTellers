@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
 </head>
 <body>
+<h1>{{story_list.0.title}}</h1>
+<ul>
 {% for story in story_list  %}
-    {% if story.title %}
-    <title>{{ story.title | title}}</title>
-        <h2>{{ story.title|title }}</h2>
-    {% endif %}
-    {{ story.content }} <br>
+    <li>{{ story.content|title }}</li>
 {% endfor %}
-
+</ul>
 {% for child in object.children.all %}
     <a href="{% url 'story_detail' pk=child.pk %}">#{{ child.id }}</a> <br>
 {% empty %}
-<p><b><--Şimdilik Son--></b></p>
+<p><--SON--></p>
 {% endfor %}
-
+<hr>
+<form action="." method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Gönder</button>
+</form>
 </body>
 </html>

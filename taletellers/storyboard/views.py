@@ -1,6 +1,7 @@
+from django.urls import reverse
 from django.core.mail import send_mail
 from django.views import generic
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from storyboard.forms import *
 from storyboard.models import Post
@@ -12,29 +13,24 @@ class HomeView(generic.ListView):
 
 
 class StoryView(generic.CreateView):
-    form_class = StoryAddForm
-    template_name = "storyboard/post_list.html"
-    success_url = "."
+    form_class = ContentForm
+    template_name = "storyboard/post_detail.html"
+
+    def get_success_url(self):
+        return reverse("story_detail", kwargs={"pk": self.object.id})
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         if self.request.method in ["POST", "PUT"]:
             post_data = kwargs["data"].copy()
-            post_data["title"] = self.story_list
+            post_data["parent"] = self.kwargs["pk"]
             kwargs["data"] = post_data
         return kwargs
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        story = context["object"]
-        story_list = []
-        while story.parent is not None:
-            story_list.append(story)
-            story = story.parent
-        else:
-            story_list.append(story)
-        story_list.reverse()
-        context["story_list"] = story_list
+        context["object"] = get_object_or_404(Post, id=self.kwargs["pk"])
+        context["story_list"] = context["object"].get_parents()
         return context
 
 

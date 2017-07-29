@@ -10,7 +10,9 @@ class ContactForm(forms.Form):
     body = forms.CharField(widget=forms.Textarea(attrs={"rows":2}))
 
 
-class StoryAddForm(forms.Form):
-    title = forms.CharField(max_length=100)
-    content = forms.CharField(max_length=140)
-    parent = forms.HiddenInput()
+class ContentForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        exclude = ["id", "score", "title"]
+        widgets = {"parent": HiddenInput()}
+
