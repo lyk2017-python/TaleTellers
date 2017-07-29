@@ -5,21 +5,37 @@ from storyboard.models import Post
 
 
 class ContactForm(forms.Form):
+    """
+    İletişim Formu: email, başlık ve içerik alarak bunu postlamaya yarar
+    """
     email = forms.EmailField()
     title = forms.CharField()
-    body = forms.CharField(widget=forms.Textarea(attrs={"rows":2}))
+    body = forms.CharField(widget=forms.Textarea(attrs={"rows": 2}))
 
 
 class AddContentForm(forms.ModelForm):
+    """
+    Olan hikayenin devamını yazabilmek için kullanılan form
+    """
     class Meta:
         model = Post
         exclude = ["id", "score", "title"]
-        widgets = {"parent": HiddenInput()}
+        widgets = {
+            "parent": HiddenInput(),
+            "super_parent": HiddenInput()
+        }
 
 
 class AddStoryForm(forms.ModelForm):
-    content = forms.CharField(widget=forms.Textarea(attrs={"rows":2}))
+    """
+    Yeni hikaye oluşturmak için kulanılan form
+    """
+    content = forms.CharField(widget=forms.Textarea(attrs={"rows": 2}))
 
     class Meta:
         model = Post
         exclude = ["id", "score", "parent"]
+        widgets = {
+            "super_parent": HiddenInput()
+        }
+
