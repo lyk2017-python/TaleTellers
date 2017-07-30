@@ -76,6 +76,15 @@ class AddStoryFormView(generic.CreateView):
         return context
 
 
+class UserView(generic.CreateView):
+    """
+    Yeni kullanici olusturmak icin gerekli olan form sayfasinin ozelliklerini ayarlar.
+    """
+    form_class = UserForm
+    template_name = "storyboard/register.html"
+    success_url = "/"
+
+
 class SSSView(generic.TemplateView):
     """
     Düz sayfa içinde sadece içerik verilirken bu şekilde kullanılır. Burada
