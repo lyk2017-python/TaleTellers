@@ -1,17 +1,10 @@
 {% extends "storyboard/base.html" %}
 
 {% block content %}
-    <h2 style="text-align: center">Son Eklenen Hikayeler</h2>
-    <div class="container">
-    <ul>
-        {% for post in post_list %}
-            <li><a href="{% url 'story_detail' pk=post.pk %}" style="font-size: x-large">{{ post.title|title }}</a>
-            {{ post.creation_time|date:"[t M y, D]" }}
-            Puan: {{ post.score }}
-            <p>{{ post.content|truncatewords:5 }}</p></li>
-        {% endfor %}
-    </ul>
-    </div>
+{% for no, post, score_sum in object_list%}
+<h3>{{ no }}. {{ post.title }}</h3>
+<p>{{ post.content }} | Puan: {{ score_sum }}</p>
+{% endfor %}
 
 {% if is_paginated %}
   <ul class="pagination">
