@@ -1,10 +1,12 @@
 {% extends "storyboard/base.html" %}
 
 {% block content %}
+<ol>
 {% for no, post, score_sum in object_list%}
-<h3>{{ no }}. {{ post.title }}</h3>
+<h3><li>{{ no }}. {{ post.title }}</li></h3>
 <p>{{ post.content }} | Puan: {{ score_sum }}</p>
 {% endfor %}
+</ol>
 
 {% if is_paginated %}
   <ul class="pagination">
