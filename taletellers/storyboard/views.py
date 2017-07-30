@@ -137,8 +137,11 @@ class Top10View(generic.ListView):
 
     def get_queryset(self):
         score_list = dict()
-        for i in Post.objects.filter(parent__isnull=True):
-            childs = Post.objects.filter(super_parent=i).aggregate(Sum("score"))
-            score_list[i] = childs["score__sum"]
-            sorted_score_list = sorted(score_list.items(), key=lambda x: x[1], reverse=True)
+        if Post.objects.all():
+            for i in Post.objects.filter(parent__isnull=True):
+                children = Post.objects.filter(super_parent=i).aggregate(Sum("score"))
+                score_list[i] = children["score__sum"]
+                sorted_score_list = sorted(score_list.items(), key=lambda x: x[1], reverse=True)
+        else:
+            sorted_score_list = []
         return [(i+1, e, f) for i, (e, f) in enumerate(sorted_score_list)]
