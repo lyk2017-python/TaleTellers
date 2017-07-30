@@ -5,13 +5,9 @@ nav {
     background-color: #2373B1 !important;
 }
 
-/*aktif olan nav optionun rengini degistiriyor*/
-.active a {
-    background-color: #1DABA1 !important;
-}
-
-.nav_option {
+.nav_option a li{
     margin-right: 15px;
+    color: #FFFFFF;
 }
 
 .nav_option:hover {
