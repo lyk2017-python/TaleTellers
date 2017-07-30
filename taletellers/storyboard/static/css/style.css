@@ -5,9 +5,9 @@ nav {
     background-color: #2373B1 !important;
 }
 
-.nav_option a li{
+.nav_option {
     margin-right: 15px;
-    color: #FFFFFF;
+    color: #fff !important;
 }
 
 .nav_option:hover {

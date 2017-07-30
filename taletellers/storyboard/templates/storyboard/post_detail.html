@@ -15,9 +15,9 @@
 {% endfor %}
 <hr>
 
-<form action="." method="POST">
+<form action="." method="POST", class="form">
     {% csrf_token %}
-    {{form.as_p}}
+    {% form.as_p %}
     <button type="submit">Gönder</button>
 </form>
 {% endblock %}
