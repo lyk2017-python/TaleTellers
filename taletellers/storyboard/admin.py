@@ -4,16 +4,20 @@ from storyboard.models import Post
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ["title", "content", "creation_time", "parent"]
-    search_fields = ["title", "content"]
-    list_filter = ["creation_time", "title"]
-    readonly_fields = ["creation_time", "parents"]
+    # Admin ana panelinde görünecek olan sütunları belirler
+    list_display = ["title", "content", "score", "creation_time", "super_parent"]
+    search_fields = ["title", "content", "super_parent"]
+    # Hangi listeler ile gruplamaya izin verileceğini seçmek için
+    list_filter = ["creation_time", ("super_parent", admin.RelatedOnlyFieldListFilter)]
+    # Değiştirlmesini istemediğimiz bölümler
+    readonly_fields = ["creation_time", "parents", "super_parent"]
     fieldsets = [
         (
             "Globals", {
                 "fields": [
                     "title",
-                    "content"
+                    "content",
+                    "parent"
                 ]
             }
         ),
@@ -22,8 +26,8 @@ class PostAdmin(admin.ModelAdmin):
                 "fields": [
                     "score",
                     "creation_time",
-                    "parent",
-                    "parents"
+                    "parents",
+                    "super_parent"
                 ]
             }
         )
@@ -31,6 +35,10 @@ class PostAdmin(admin.ModelAdmin):
     ]
 
     def parents(self, object):
+        """
+        Bakmak istediğimiz postun bağlı olduğu hikaye ağacını listeler.
+        Böyle bir fonksiyon ile yeni bir kategori tanımlamak mümkün olur.
+        """
         parents = object.get_parents(exclude_self=True)
         if parents:
             return "<br>".join([obj.content for obj in parents])

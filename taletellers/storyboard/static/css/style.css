@@ -1,15 +1,13 @@
+/*https://codepen.io/yavuzovski/pen/XKjjdV*/
+
 nav {
     padding: 20px;
     background-color: #2373B1 !important;
 }
 
-/*aktif olan nav optionun rengini degistiriyor*/
-.active a {
-    background-color: #1DABA1 !important;
-}
-
-.nav_option {
+.nav_option a li{
     margin-right: 15px;
+    color: #FFFFFF;
 }
 
 .nav_option:hover {
@@ -25,14 +23,12 @@ nav {
     width: auto;
 }
 
+ul {
+    list-style-type: none;
+}
+
 #home {
     margin-left: 40px;
     font-size: x-large;
     color: #FFFFFF;
-}
-
-.post_form {
-    background-color: #eeeefe;
-    padding: 50px 10px 50px 10px;
-    border-radius: 5px;
 }
