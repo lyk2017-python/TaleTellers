@@ -1,27 +1,18 @@
 {% extends "storyboard/base.html" %}
 
 {% block content %}
-
-<div class="row-fluid">
-    <div class="col-md-6 col-md-offset-1">
-        <ul>
-        {% for post in post_list|dictsortreversed:"id" %}
-            <li><a href="{% url 'story_detail' pk=post.pk %}">{{ post.title|title}}</a>
+<ul>
+    {% for post in post_list|dictsortreversed:"id" %}
+    <li><a href="{% url 'story_detail' pk=post.pk %}">{{ post.title|title}}</a>
         {{ post.creation_time|date:"[t M y, D]" }}
         <p>{{ post.content|truncatewords:4 }}</p></li>
-        {% endfor %}
-        </ul>
-    </div>
-    <br> <br> <br> <br>
-    <div class="col-md-offset-7 post_form" >
-        <form action="." method="POST" style="padding: 50px">
-            {% csrf_token %}
-            {{form.as_p}}
-            <div class="col-md-offset-8">
-                <button type="submit">Gönder</button>
-            </div>
-        </form>
-    </div>
-</div>
+    {% endfor %}
+</ul>
+<hr>
 
+<form action="." method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Gönder</button>
+</form>
 {% endblock %}
