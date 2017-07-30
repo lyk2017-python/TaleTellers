@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from django.urls import reverse
 from django.core.mail import send_mail
 from django.views import generic
@@ -12,8 +13,10 @@ class HomeView(generic.ListView):
     Anasayfada skora göre sıralı ilk 5 hikayenin gösterilmesini sağlar. Ancak sadece
     birinci postun (yani başlıklı postun) skoruna bakıyor
     """
+    paginate_by = 5
+
     def get_queryset(self):
-        return Post.objects.filter(parent__isnull=True).order_by("-score")[:5]
+        return Post.objects.filter(parent__isnull=True).order_by("-creation_time")
 
 
 class AddContentFormView(generic.CreateView):
@@ -126,3 +129,16 @@ class ContactFormView(generic.FormView):
             ["bilal@taletellers.com"]
         )
         return super().form_valid(form)
+
+
+class Top10View(generic.ListView):
+    template_name = "storyboard/top10_list.html"
+    paginate_by = 10
+
+    def get_queryset(self):
+        score_list = dict()
+        for i in Post.objects.filter(parent__isnull=True):
+            childs = Post.objects.filter(super_parent=i).aggregate(Sum("score"))
+            score_list[i] = childs["score__sum"]
+            sorted_score_list = sorted(score_list.items(), key=lambda x: x[1], reverse=True)
+        return [(i+1, e, f) for i, (e, f) in enumerate(sorted_score_list)]
