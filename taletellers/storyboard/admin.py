@@ -8,7 +8,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ["title", "content", "score", "creation_time", "super_parent"]
     search_fields = ["title", "content", "super_parent"]
     # Hangi listeler ile gruplamaya izin verileceğini seçmek için
-    list_filter = ["creation_time", "title", "super_parent"]
+    list_filter = ["creation_time", ("super_parent", admin.RelatedOnlyFieldListFilter)]
     # Değiştirlmesini istemediğimiz bölümler
     readonly_fields = ["creation_time", "parents", "super_parent"]
     fieldsets = [
@@ -24,6 +24,7 @@ class PostAdmin(admin.ModelAdmin):
         (
             "Others", {
                 "fields": [
+                    "score",
                     "creation_time",
                     "parents",
                     "super_parent"
