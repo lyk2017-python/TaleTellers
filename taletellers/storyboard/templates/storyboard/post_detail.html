@@ -2,11 +2,11 @@
 
 {% block content %}
 <h2>{{story_list.0.title}}</h2>
-<ul>
+<p>
 {% for story in story_list  %}
-    <li>{{ story.content|title }}</li>
+    {{ story.content| }}.
 {% endfor %}
-</ul>
+</p>
 
 {% for child in object.children.all %}
     <a href="{% url 'story_detail' pk=child.pk %}">#{{ child.id }}</a> <br>
