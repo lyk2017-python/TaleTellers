@@ -1,6 +1,30 @@
 {% extends "storyboard/base.html" %}
 
 {% block content %}
+
+<div class="row-fluid">
+    <div class="col-md-6 col-md-offset-1">
+        <ul>
+        {% for post in post_list|dictsortreversed:"id" %}
+            <li><a href="{% url 'story_detail' pk=post.pk %}">{{ post.title|title}}</a>
+        {{ post.creation_time|date:"[t M y, D]" }}
+        <p>{{ post.content|truncatewords:4 }}</p></li>
+        {% endfor %}
+        </ul>
+    </div>
+    <br> <br> <br> <br>
+    <div class="col-md-offset-7 post_form" >
+        <form action="." method="POST" style="padding: 50px">
+            {% csrf_token %}
+            {{form.as_p}}
+            <div class="col-md-offset-8">
+                <button type="submit">Gönder</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--
 <ul>
     {% for post in post_list|dictsortreversed:"id" %}
     <li><a href="{% url 'story_detail' pk=post.pk %}">{{ post.title|title}}</a>
@@ -8,11 +32,50 @@
         <p>{{ post.content|truncatewords:4 }}</p></li>
     {% endfor %}
 </ul>
-<hr>
 
+<form class="form-horizontal" action="." method="POST">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-4 col-md-offset-7 ">
+            {{form.as_p}}
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-offset-10">
+                <button type="submit">Gönder</button>
+            </div>
+        </div>
+    </div>
+</form>
+-->
+<!--
+    <div class="form-group">
+        <label class="col-md-3 control-label">Title</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="inputtitle" placeholder="Başlık">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">Content</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="inputcontent" placeholder="İçerik">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-9 col-md-3">
+            <button type="submit" class="btn btn-default">Gönder</button>
+        </div>
+    </div>
+-->
+
+
+<!--
 <form action="." method="POST">
     {% csrf_token %}
     {{form.as_p}}
     <button type="submit">Gönder</button>
 </form>
+-->
 {% endblock %}
