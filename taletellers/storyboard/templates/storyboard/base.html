@@ -1,3 +1,4 @@
+<head>
 {% extends 'storyboard/bootstrap.html' %}
 {% load bootstrap3 %}
 
@@ -6,32 +7,44 @@
 {% endblock %}
 
 {% block bootstrap3_content %}
-        {% load static %}
+    {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<<<<<<< HEAD
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js">
     <script type="text/javascript" src="{% static 'js/jquery.balloon.js' %}"></script>
+=======
+    <link rel="stylesheet" href="{% static 'css/hover.css' %}">
+    <!-- jQuery Library-->
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
+>>>>>>> f33cb0cfedadc36778e2644105215cd61a223720
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 
 </head>
-<body data-spy="scroll" data-target="#navbar">
-<nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/" id="home">TaleTellers</a>
+            <a class="navbar-brand" href="#">TaleTellers</a>
         </div>
-        <div>
-            <ul class="nav navbar-nav" id="nav_ul">
-                <li><a href="{% url 'top10' %}" class="nav_option">TOP STORIES</a></li>
-                <li><a href="{% url 'add_story' %}" class="nav_option">NEW STORY</a></li>
-                <li><a href="{% url 'faq' %}" class="nav_option">FAQ</a></li>
-                <li><a href="{% url 'contact' %}" class="nav_option">CONTACT</a></li>
-                <li><a href="{% url 'register' %}" class="nav_option">REGISTER</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right" id="nav_login">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
-        </div>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown">STORIES
+                  <span class="caret"></span></a>
+                <ul class="dropdown-menu" id="nav-dropdown">
+                    <li><a href="{% url 'top10' %}" id="">Top Stories</a></li>
+                    <li><a href="#">Finished Stories</a></li>
+                    <li><a href="#">Continued Stories</a></li>
+                </ul>
+            </li>
+            <li><a class="hvr-push" href="{% url 'add_story' %}">NEW STORY</a></li>
+            <li><a class="hvr-push" href="{% url 'faq' %}">FAQ</a></li>
+            <li><a class="hvr-push" href="{% url 'contact' %}">CONTACT</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" id="nav-icons">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
     </div>
 </nav>
 <p id="boo">afe</p>
@@ -39,6 +52,6 @@
 {% block content %}
 {% endblock %}
 </div>
-</div>
 {% block javascript %}{% endblock %}
+</body>
 {% endblock %}

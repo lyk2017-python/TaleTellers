@@ -1,48 +1,53 @@
 /*https://codepen.io/yavuzovski/pen/XKjjdV*/
 
+
 nav {
     padding: 10px;
     background-color: #2373B1 !important;
     border: hidden;
-}
-
-.navbar-nav {
-    margin-right: 15px;
-}
-
-#nav_ul li a {
-    color: #fff;
-}
-.nav_option {
-  transition: 0.6s;
-  color: #fff;
-  text-decoration: none;
-  border-right: 2px dotted transparent;
-  padding: 30px 8px 0 10px;
-  margin: 0 10px;
-}
-.nav_option:hover {
-  border-bottom: 2px dotted #fff;
-  padding-bottom: 5px;
-}
-
-#nav_login li a {
-    color: #fff;
+    color: #fff;#2373B1
 }
 
 .under_navbar {
     margin-top: 100px;
-    width: auto;
+}
+
+#navbar a,
+#navbar li a {
+    color: #fff;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+#nav-dropdown li a {
+    color: #2373B1;
+}
+
+#nav-icons li a:hover,
+.navbar-right li a span:hover {
+    color: #90caf9;
+}
+
+#nav-dropdown li a:hover {
+    background-color: #2373B1;
+    color: #fff;
+}
+
+#nav-dropdown {
+    background-color: #f1f1f1;
 }
 
 ul {
     list-style-type: none;
 }
 
-#home {
-    margin-left: 40px;
-    padding-right: 20px;
+.navbar-brand {
     border-right:2px dashed #fff;
     font-size: x-large;
-    color: #fff;
+}
+
+.navbar-right {
+    margin-right: 15px;
 }

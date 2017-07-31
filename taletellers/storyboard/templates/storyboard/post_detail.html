@@ -1,7 +1,5 @@
 {% extends "storyboard/base.html" %}
 
-
-
 {% block content %}
 <h2>{{story_list.0.title}}</h2>
 
@@ -9,15 +7,16 @@
     <content_detail id="{{ story.id }}">{{ story.content }}.</content_detail>
 {% endfor %}
 
-
+<p>
 {% for child in object.children.all %}
     <a href="{% url 'story_detail' pk=child.pk %}">#{{ child.id }}</a> <br>
 {% empty %}
+</p>
 <p><--SON--></p>
 {% endfor %}
 <hr>
 
-<form action="." method="POST", class="form">
+<form action="." method="POST" class="form">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Gönder</button>
