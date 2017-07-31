@@ -7,7 +7,7 @@ function hide_details(content) {
 
 // ajax example
 /*
-<span id="{{ object.id }}">{{object.score}}</span>
+<span id="like_{{ object.id }}">{{object.score}}</span>
 <button onclick="like(true, {{ object.id }})">Like</button>
 <button onclick="like(false, {{ object.id }})">Dislike</button>
 
