@@ -8,9 +8,38 @@
 {% block bootstrap3_content %}
         {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/hover.css' %}">
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </head>
-<body data-spy="scroll" data-target="#navbar">
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">TaleTellers</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown">STORIES
+                  <span class="caret"></span></a>
+                <ul class="dropdown-menu" id="nav-dropdown">
+                    <li><a href="{% url 'top10' %}" id="">Top Stories</a></li>
+                    <li><a href="#">Finished Stories</a></li>
+                    <li><a href="#">Continued Stories</a></li>
+                </ul>
+            </li>
+            <li><a class="hvr-push" href="{% url 'add_story' %}">NEW STORY</a></li>
+            <li><a class="hvr-push" href="{% url 'faq' %}">FAQ</a></li>
+            <li><a class="hvr-push" href="{% url 'contact' %}">CONTACT</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" id="nav-icons">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!--
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -18,11 +47,11 @@
         </div>
         <div>
             <ul class="nav navbar-nav" id="nav_ul">
-                <li><a href="{% url 'top10' %}" class="nav_option">TOP STORIES</a></li>
-                <li><a href="{% url 'add_story' %}" class="nav_option">NEW STORY</a></li>
-                <li><a href="{% url 'faq' %}" class="nav_option">FAQ</a></li>
-                <li><a href="{% url 'contact' %}" class="nav_option">CONTACT</a></li>
-                <li><a href="{% url 'register' %}" class="nav_option">REGISTER</a></li>
+                <li><a href="{% url 'top10' %}" class="hvr-buzz-out">TOP STORIES</a></li>
+                <li><a href="{% url 'add_story' %}" class="hvr-buzz-out">NEW STORY</a></li>
+                <li><a href="{% url 'faq' %}" class="hvr-buzz-out">FAQ</a></li>
+                <li><a href="{% url 'contact' %}" class="hvr-buzz-out">CONTACT</a></li>
+<!--                <li><a href="{% url 'register' %}" class="hvr-buzz-out">REGISTER</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right" id="nav_login">
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -31,6 +60,8 @@
         </div>
     </div>
 </nav>
+-->
+
 <div class="container under_navbar">
 {% block content %}
 {% endblock %}
