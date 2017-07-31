@@ -1,5 +1,5 @@
-from django.db.models import Sum
-from django.http import JsonResponse
+from django.db.models import Sum, F
+from django.http import JsonResponse, HttpResponse
 from django.urls import reverse
 from django.core.mail import send_mail
 from django.views import generic
@@ -154,3 +154,22 @@ def user_like_response(request):
         "score": Post.objects.filter(id=id)[0].score
     }
     return JsonResponse(data)
+
+# ajax example
+# def like(request):
+#     id = request.POST.get("id", default=None)
+#     like = request.POST.get("like")
+#     obj = get_object_or_404(Post, id=int(id))
+#     if like == "true":
+#         # f objesi veri tabanindaki ilgili sutunun degerini cekerek
+#         # atama yapmak yerine arttirma veya azaltma yapmamizi saglar.
+#         obj.like = F("like") + 1
+#         obj.save(update_fields=["score"])
+#     elif like == "false":
+#         obj.like = F("like") - 1
+#         obj.save(update_fields=["score"])
+#     else:
+#         return HttpResponse(status=400)
+#     obj.refresh_from_db()
+#     return JsonResponse({"like": obj.score, "id": id})
+
