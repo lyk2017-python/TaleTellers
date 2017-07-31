@@ -30,7 +30,7 @@ function getCookie(name) {
 var csrftoken = getCookie('csrftoken');
 
 
-function inc_like(param) {
+function like(param) {
 	$.post({
 		data: "{'like': param, 'id': {{object.id}}, 'csrfmiddlewaretoken': getCookie('csrftoken')},
 		url: "{% url 'like_dislike' %}
