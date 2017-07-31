@@ -1,21 +1,33 @@
 /*https://codepen.io/yavuzovski/pen/XKjjdV*/
 
 nav {
-    padding: 20px;
+    padding: 10px;
     background-color: #2373B1 !important;
+    border: hidden;
 }
 
-.nav_option {
+.navbar-nav {
     margin-right: 15px;
-    color: #fff !important;
 }
 
+#nav_ul li a {
+    color: #fff;
+}
+.nav_option {
+  transition: 0.6s;
+  color: #fff;
+  text-decoration: none;
+  border-right: 2px dotted transparent;
+  padding: 30px 8px 0 10px;
+  margin: 0 10px;
+}
 .nav_option:hover {
-    background-color: #1DABA1 !important;
+  border-bottom: 2px dotted #fff;
+  padding-bottom: 5px;
 }
 
-#nav_ul {
-    float: right;
+#nav_login li a {
+    color: #fff;
 }
 
 .under_navbar {
@@ -29,6 +41,8 @@ ul {
 
 #home {
     margin-left: 40px;
+    padding-right: 20px;
+    border-right:2px dashed #fff;
     font-size: x-large;
-    color: #FFFFFF;
+    color: #fff;
 }

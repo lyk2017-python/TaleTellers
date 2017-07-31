@@ -8,20 +8,27 @@
 {% block bootstrap3_content %}
         {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <script type="text/javascript" src="{% static 'js/main.js' %}"></script></head>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</head>
 <body data-spy="scroll" data-target="#navbar">
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/" id="home">TaleTellers</a>
         </div>
-        <ul class="nav navbar-nav" id="nav_ul">
-            <li><a href="{% url 'add_story' %}" class="nav_option"  >NEW STORY</a></li>
-            <li><a href="{% url 'top10' %}" class="nav_option" style="color: #FFF">TOP STORIES</a></li>
-            <li><a href="{% url 'faq' %}" class="nav_option" style="color: #FFF">FAQ</a></li>
-            <li><a href="{% url 'contact' %}" class="nav_option" style="color: #FFF">CONTACT</a></li>
-            <li><a href="{% url 'register' %}" class="nav_option" style="color: #FFF">REGISTER</a></li>
-        </ul>
+        <div>
+            <ul class="nav navbar-nav" id="nav_ul">
+                <li><a href="{% url 'top10' %}" class="nav_option">TOP STORIES</a></li>
+                <li><a href="{% url 'add_story' %}" class="nav_option">NEW STORY</a></li>
+                <li><a href="{% url 'faq' %}" class="nav_option">FAQ</a></li>
+                <li><a href="{% url 'contact' %}" class="nav_option">CONTACT</a></li>
+                <li><a href="{% url 'register' %}" class="nav_option">REGISTER</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" id="nav_login">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+        </div>
     </div>
 </nav>
 <div class="container under_navbar">
