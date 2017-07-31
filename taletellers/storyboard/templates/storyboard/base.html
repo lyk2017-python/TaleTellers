@@ -1,3 +1,4 @@
+<head>
 {% extends 'storyboard/bootstrap.html' %}
 {% load bootstrap3 %}
 
@@ -6,9 +7,11 @@
 {% endblock %}
 
 {% block bootstrap3_content %}
-        {% load static %}
+    {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/hover.css' %}">
+    <!-- jQuery Library-->
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </head>
 <body>
@@ -34,38 +37,13 @@
         </ul>
         <ul class="nav navbar-nav navbar-right" id="nav-icons">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul>
     </div>
 </nav>
-
-<!--
-<nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/" id="home">TaleTellers</a>
-        </div>
-        <div>
-            <ul class="nav navbar-nav" id="nav_ul">
-                <li><a href="{% url 'top10' %}" class="hvr-buzz-out">TOP STORIES</a></li>
-                <li><a href="{% url 'add_story' %}" class="hvr-buzz-out">NEW STORY</a></li>
-                <li><a href="{% url 'faq' %}" class="hvr-buzz-out">FAQ</a></li>
-                <li><a href="{% url 'contact' %}" class="hvr-buzz-out">CONTACT</a></li>
-<!--                <li><a href="{% url 'register' %}" class="hvr-buzz-out">REGISTER</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right" id="nav_login">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
--->
-
 <div class="container under_navbar">
 {% block content %}
 {% endblock %}
 </div>
 </body>
-
 {% endblock %}

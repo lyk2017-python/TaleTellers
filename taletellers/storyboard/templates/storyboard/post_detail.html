@@ -2,22 +2,22 @@
 
 {% block content %}
 <h2>{{story_list.0.title}}</h2>
-<p>
 {% for story in story_list  %}
-    {{ story.content }}.
+<content_detail onmouseover="show_details(this)" onmouseout="hide_details(this)">{{ story.content }}.</content_detail>
 {% endfor %}
-</p>
 
+<p>
 {% for child in object.children.all %}
     <a href="{% url 'story_detail' pk=child.pk %}">#{{ child.id }}</a> <br>
 {% empty %}
+</p>
 <p><--SON--></p>
 {% endfor %}
 <hr>
 
-<form action="." method="POST", class="form">
+<form action="." method="POST" class="form">
     {% csrf_token %}
-    {% form.as_p %}
+    {{ form.as_p }}
     <button type="submit">Gönder</button>
 </form>
 {% endblock %}
