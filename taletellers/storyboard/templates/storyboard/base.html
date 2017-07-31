@@ -9,15 +9,6 @@
 {% block bootstrap3_content %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-<<<<<<< HEAD
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js">
-    <script type="text/javascript" src="{% static 'js/jquery.balloon.js' %}"></script>
-=======
-    <link rel="stylesheet" href="{% static 'css/hover.css' %}">
-    <!-- jQuery Library-->
-    <!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
->>>>>>> f33cb0cfedadc36778e2644105215cd61a223720
-    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 
 </head>
 <body>
@@ -52,6 +43,8 @@
 {% block content %}
 {% endblock %}
 </div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 {% block javascript %}{% endblock %}
 </body>
 {% endblock %}
