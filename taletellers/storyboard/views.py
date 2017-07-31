@@ -1,4 +1,5 @@
 from django.db.models import Sum
+from django.http import JsonResponse
 from django.urls import reverse
 from django.core.mail import send_mail
 from django.views import generic
@@ -145,3 +146,11 @@ class Top10View(generic.ListView):
         else:
             sorted_score_list = []
         return [(i+1, e, f) for i, (e, f) in enumerate(sorted_score_list)]
+
+
+def user_like_response(request):
+    id = request.GET.get("id", None)
+    data = {
+        "score": Post.objects.filter(id=id)[0].score
+    }
+    return JsonResponse(data)

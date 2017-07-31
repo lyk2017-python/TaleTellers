@@ -1,12 +1,14 @@
 {% extends "storyboard/base.html" %}
 
+
+
 {% block content %}
 <h2>{{story_list.0.title}}</h2>
-<p>
+
 {% for story in story_list  %}
-    {{ story.content }}.
+    <content_detail id="{{ story.id }}">{{ story.content }}.</content_detail>
 {% endfor %}
-</p>
+
 
 {% for child in object.children.all %}
     <a href="{% url 'story_detail' pk=child.pk %}">#{{ child.id }}</a> <br>
@@ -17,7 +19,37 @@
 
 <form action="." method="POST", class="form">
     {% csrf_token %}
-    {% form.as_p %}
+    {{ form.as_p }}
     <button type="submit">Gönder</button>
 </form>
+
+<div class="boru" hidden>
+    Bu ne
+</div>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        $('content_detail').mouseover(function() {
+            $(this).css("background-color", "yellow")
+        });
+        $('content_detail').mouseout(function() {
+            $(this).css("background-color", "transparent")
+        });
+        $('content_detail').click(function() {
+            var id = $(this).context.attributes.id.value;
+
+        $.ajax({
+            url: '{% url "ulr" %}',
+            data: {
+                'id': id
+            },
+            dataType: "json",
+            success: function(data) {
+                $('.boru').text(data.score);
+                $('.boru').show();
+            }
+        });
+        });
+    </script>
 {% endblock %}

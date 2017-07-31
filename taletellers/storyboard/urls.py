@@ -9,4 +9,5 @@ urlpatterns = [
     url(r"^contact/", ContactFormView.as_view(), name="contact"),
     url(r"^register/", UserView.as_view(), name="register"),
     url(r"^top10/$", Top10View.as_view(), name="top10"),
+    url(r"^ajax/user_like_response", user_like_response, name="ulr"),
 ]

@@ -8,7 +8,10 @@
 {% block bootstrap3_content %}
         {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js">
+    <script type="text/javascript" src="{% static 'js/jquery.balloon.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
 </head>
 <body data-spy="scroll" data-target="#navbar">
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
@@ -31,10 +34,11 @@
         </div>
     </div>
 </nav>
-<div class="container under_navbar">
+<p id="boo">afe</p>
+<div class="row-fluid">
 {% block content %}
 {% endblock %}
 </div>
-</body>
-
+</div>
+{% block javascript %}{% endblock %}
 {% endblock %}
