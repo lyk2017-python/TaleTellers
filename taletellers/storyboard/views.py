@@ -163,8 +163,8 @@ def user_like_response(request):
 
 
 def like(request):
-    id = request.POST.get("id", default=None)
-    like = request.POST.get("like")
+    id = request.GET.get("id", default=None)
+    like = request.GET.get("like")
     obj = get_object_or_404(Post, id=int(id))
     if like == "true":
         # f objesi veri tabanindaki ilgili sutunun degerini cekerek

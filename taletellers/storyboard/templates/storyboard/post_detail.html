@@ -21,18 +21,17 @@
     <a id="{{ story.id }}"
         href="#"
         class="storya"
-        style="color:black :hover "
         role="button"
         data-container="body"
         data-toggle="popover"
-        data-trigger="focus"
+        #data-trigger="focus"
         data-placement="top"
         data-html="auto"
         title="#{{ story.id }} {{ story.creation_time }}"
         data-content='<div style="text-align:center" >
-                            <span class="glyphicon glyphicon-chevron-up"  id="like_button" aria-hidden="true"></span>
-                              Score: <div style="display:inline" class="boru"></div>
-                            <span class="glyphicon glyphicon-chevron-down" id="dislike_button" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-chevron-up" name={{story.id}} id="like_button" aria-hidden="true"></span>
+                              Score: <span class="boru"></span>
+                            <span class="glyphicon glyphicon-chevron-down" name={{story.id}} id="dislike_button" aria-hidden="true"></span>
                       </div>'
     >{{ story.content }}.</a>
 {% endfor %}
@@ -59,7 +58,6 @@
             $('[data-toggle="popover"]').popover()
         });
         $('[data-toggle="popover"]').click(function () {
-            console.log($(this));
         });
         $('.storya').click(function() {
             var id = $(this).context.attributes.id.value;
@@ -75,18 +73,31 @@
             }
         });
         });
-
-        function like(param, id) {
+        $(document).on("click", "#like_button", function() {
+            var id = $(this).context.attributes.name.value;
             $.ajax({
                 data: {
-                    "like": param,
+                    "like": "true",
                     "id": id,
                 },
                 url: "{% url "like_dislike" %}",
                 success: function (data) {
-                    $("#like_"+data.id).text(data.like)
+                    $('.boru').text(data.like);
                 }
             }
-        )};
+        )});
+        $(document).on("click", "#dislike_button", function() {
+            var id = $(this).context.attributes.name.value;
+            $.ajax({
+                data: {
+                    "like": "false",
+                    "id": id,
+                },
+                url: "{% url "like_dislike" %}",
+                success: function (data) {
+                    $('.boru').text(data.like);
+                }
+            }
+        )});
     </script>
 {% endblock %}
