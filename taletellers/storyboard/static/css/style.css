@@ -5,7 +5,7 @@ nav {
     padding: 10px;
     background-color: #2373B1 !important;
     border: hidden;
-    color: #fff;#2373B1
+    color: #fff;
 }
 
 .under_navbar {
@@ -44,6 +44,7 @@ ul {
 }
 
 .navbar-brand {
+    margin: 0px;
     border-right:2px dashed #fff;
     font-size: x-large;
 }
@@ -51,7 +52,6 @@ ul {
 .navbar-right {
     margin-right: 15px;
 }
-
 
 
 /* Push */
