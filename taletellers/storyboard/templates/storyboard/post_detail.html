@@ -1,5 +1,5 @@
 {% extends "storyboard/base.html" %}
-
+{% load bootstrap3 %}
 
 
 {% block content %}
@@ -48,8 +48,8 @@
 
 <form action="." method="POST" class="form">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Gönder</button>
+    {% bootstrap_form form %}
+    <button type="submit" class="btn btn-primary>Gönder</button>
 </form>
 {% endblock %}
 
@@ -87,6 +87,6 @@
                     $("#like_"+data.id).text(data.like)
                 }
             }
-        )};
+        )}
     </script>
 {% endblock %}

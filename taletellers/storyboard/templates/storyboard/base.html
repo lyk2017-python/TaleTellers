@@ -13,9 +13,6 @@
 </head>
 <body>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid ">
         <div class="navbar-header">
@@ -53,6 +50,17 @@
 
 <div class="container under_navbar">
 
+{% block content %}
+{% endblock %}
+
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+{% block javascript %}
+{% endblock %}
+
 {% if request.user.is_authenticated %}
     <script>
         $('.nav-hide').prop('hidden', true);
@@ -60,16 +68,9 @@
     </script>
 {% else %}
     <script>
-        $('#nav-icons').prop('hidden', false);
+        $('.nav-hide').prop('hidden', false);
     </script>
 {% endif %}
 
-{% block content %}
-{% endblock %}
-
-</div>
-
-{% block javascript %}
-{% endblock %}
 </body>
 {% endblock %}
