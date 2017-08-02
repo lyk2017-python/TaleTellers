@@ -157,21 +157,22 @@ def user_like_response(request):
     }
     return JsonResponse(data)
 
-# ajax example
-# def like(request):
-#     id = request.POST.get("id", default=None)
-#     like = request.POST.get("like")
-#     obj = get_object_or_404(Post, id=int(id))
-#     if like == "true":
-#         # f objesi veri tabanindaki ilgili sutunun degerini cekerek
-#         # atama yapmak yerine arttirma veya azaltma yapmamizi saglar.
-#         obj.like = F("like") + 1
-#         obj.save(update_fields=["score"])
-#     elif like == "false":
-#         obj.like = F("like") - 1
-#         obj.save(update_fields=["score"])
-#     else:
-#         return HttpResponse(status=400)
-#     obj.refresh_from_db()
-#     return JsonResponse({"like": obj.score, "id": id})
+
+def like(request):
+    id = request.POST.get("id", default=None)
+    like = request.POST.get("like")
+    obj = get_object_or_404(Post, id=int(id))
+    if like == "true":
+        # f objesi veri tabanindaki ilgili sutunun degerini cekerek
+        # atama yapmak yerine arttirma veya azaltma yapmamizi saglar.
+        obj.score = F("score") + 1
+        obj.save(update_fields=["score"])
+    elif like == "false":
+        obj.score = F("score") - 1
+        obj.save(update_fields=["score"])
+    else:
+        return HttpResponse(status=400)
+    obj.refresh_from_db()
+    return JsonResponse({"like": obj.score, "id": id})
+
 
