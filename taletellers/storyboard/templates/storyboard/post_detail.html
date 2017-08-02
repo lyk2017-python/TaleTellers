@@ -3,17 +3,34 @@
 
 
 {% block content %}
+<style>
+    .storya{
+        color: black
+    }
+    .storya:hover{
+        color: black;
+        text-decoration:inherit;
+    }
+    .storya:focus{
+        color: black;
+        text-decoration:inherit;
+    }
+</style>
 <h2>{{story_list.0.title}}</h2>
 {% for story in story_list  %}
-    <content_detail id="{{ story.id }}"
-                    role="button"
-                    data-container="body"
-                    data-toggle="popover"
-                    data-placement="top"
-                    data-html="auto"
-                    title="#{{ story.id }} {{ story.creation_time }}"
-                    data-content="<button  class='btn btn-default'>Like</button> Score: {{story.score}} <button  class='btn btn-default'>Like</button>"
-    >{{ story.content }}.</content_detail>
+    <a id="{{ story.id }}"
+        href="#"
+        class="storya"
+        style="color:black :hover "
+        role="button"
+        data-container="body"
+        data-toggle="popover"
+        data-trigger="focus"
+        data-placement="top"
+        data-html="auto"
+        title="#{{ story.id }} {{ story.creation_time }}"
+        data-content="<button  class='btn btn-default'>Like</button> Score: <p style='display:inline' class='boru'></p> <button  class='btn btn-default'>Like</button>"
+    >{{ story.content }}.</a>
 {% endfor %}
 
 <p>
@@ -30,10 +47,6 @@
     {{ form.as_p }}
     <button type="submit">Gönder</button>
 </form>
-
-<div class="boru" hidden>
-    Bu ne
-</div>
 {% endblock %}
 
 {% block javascript %}
@@ -41,7 +54,10 @@
         $(function () {
             $('[data-toggle="popover"]').popover()
         });
-        $('content_detail').click(function() {
+        $('[data-toggle="popover"]').click(function () {
+            console.log($(this));
+        });
+        $('.storya').click(function() {
             var id = $(this).context.attributes.id.value;
 
         $.ajax({
@@ -52,7 +68,6 @@
             dataType: "json",
             success: function(data) {
                 $('.boru').text(data.score);
-                $('.boru').show();
             }
         });
         });
