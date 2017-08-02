@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
 from django.forms import HiddenInput
 
 from storyboard.models import Post
@@ -41,36 +43,10 @@ class AddStoryForm(forms.ModelForm):
         }
 
 
-class UserForm(forms.ModelForm):
+class UserForm(UserCreationForm):
     """
     Yeni kullanici olusturmak icin kullanilan form
     """
-    username = forms.CharField(max_length=30)
-    first_name = forms.CharField(max_length=30)
-    last_name = forms.CharField(max_length=30)
-    email = forms.EmailField()
-
-    class Meta:
-        model = User
-        fields = [
-            "username",
-            "password",
-            "email",
-            "first_name",
-            "last_name",
-
-        ]
-        exclude = [
-            "id",
-            "last_login",
-            "date_joined",
-            "is_superuser",
-            "groups",
-            "user_permissions",
-            "is_staff",
-            "is_active",
-        ]
-        widgets = {
-            "password": forms.PasswordInput(),
-        }
+    class Meta(UserCreationForm.Meta):
+        model = get_user_model()
 
