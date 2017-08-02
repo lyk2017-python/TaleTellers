@@ -10,5 +10,6 @@ urlpatterns = [
     url(r"^register/", UserView.as_view(), name="register"),
     url(r"^top10/$", Top10View.as_view(), name="top10"),
     url(r"^ajax/user_like_response", user_like_response, name="ulr"),
+    url(r"^ajax/like_dislike", like, name="like_dislike")
     # url(r"^api/likes$", like, name="like_dislike"),     # ajax example
 ]
