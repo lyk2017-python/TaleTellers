@@ -12,18 +12,18 @@
 
 </head>
 <body>
-{% if request.user.is_authenticated %}
-    Merhaba, {{ request.user.username }}
-{% endif %}
 
-<nav class="navbar navbar-default navbar-fixed-top" id="navbar">
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid ">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-                <span class="icon-bar"></span></button>
-            <a class="navbar-brand" href="/">TaleTellers</a>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" id="title" href="/">TaleTellers</a>
         </div>
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse" id="navbar">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">STORIES
@@ -39,14 +39,26 @@
                 <li><a class="hvr-push" href="{% url 'contact' %}">CONTACT</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right" id="nav-icons">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
 <div class="container under_navbar">
+
+{% if request.user.is_authenticated %}
+    Merhaba {{ request.user.username }}, Çıkış yapmak için
+    <form action="." method="post" >
+    {% csrf_token %}
+    <input type="hidden" value="/" name="next">
+    <a href="{% url 'logout' %}">tıklayın</a>
+    </form>
+{% else %}
+    Giriş yapmak için <a href="{% url "login" %}">tıklayın</a>
+{% endif %}
+
 {% block content %}
 {% endblock %}
 </div>
