@@ -43,9 +43,15 @@
     </div>
 </nav>
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
 <div class="container under_navbar">
 
 {% if request.user.is_authenticated %}
+    <script>
+        $('#nav-icons').prop('hidden', true);
+    </script>
     Merhaba {{ request.user.username }}, Çıkış yapmak için
     <form action="." method="post" >
     {% csrf_token %}
@@ -53,14 +59,16 @@
     <a href="{% url 'logout' %}">tıklayın</a>
     </form>
 {% else %}
+    <script>
+        $('#nav-icons').prop('hidden', false);
+    </script>
     Giriş yapmak için <a href="{% url "login" %}">tıklayın</a>
 {% endif %}
 
 {% block content %}
 {% endblock %}
+
 </div>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 {% block javascript %}
 {% endblock %}
 </body>
