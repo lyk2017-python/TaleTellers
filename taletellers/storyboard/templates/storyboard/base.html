@@ -15,32 +15,37 @@
 {% if request.user.is_authenticated %}
     Merhaba, {{ request.user.username }}
 {% endif %}
+
 <nav class="navbar navbar-default navbar-fixed-top" id="navbar">
-    <div class="container-fluid">
+    <div class="container-fluid ">
         <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                <span class="icon-bar"></span></button>
             <a class="navbar-brand" href="/">TaleTellers</a>
         </div>
-        <ul class="nav navbar-nav">
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown">STORIES
-                  <span class="caret"></span></a>
-                <ul class="dropdown-menu" id="nav-dropdown">
-                    <li><a href="{% url 'top10' %}" id="">Top Stories</a></li>
-                    <li><a href="#">Finished Stories</a></li>
-                    <li><a href="#">Continued Stories</a></li>
-                </ul>
-            </li>
-            <li><a class="hvr-push" href="{% url 'add_story' %}">NEW STORY</a></li>
-            <li><a class="hvr-push" href="{% url 'faq' %}">FAQ</a></li>
-            <li><a class="hvr-push" href="{% url 'contact' %}">CONTACT</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right" id="nav-icons">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        </ul>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">STORIES
+                      <span class="caret"></span></a>
+                    <ul class="dropdown-menu" id="nav-dropdown">
+                        <li><a href="{% url 'top10' %}" id="">Top Stories</a></li>
+                        <li><a href="#">Finished Stories</a></li>
+                        <li><a href="#">Continued Stories</a></li>
+                    </ul>
+                </li>
+                <li><a class="hvr-push" href="{% url 'add_story' %}">NEW STORY</a></li>
+                <li><a class="hvr-push" href="{% url 'faq' %}">FAQ</a></li>
+                <li><a class="hvr-push" href="{% url 'contact' %}">CONTACT</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" id="nav-icons">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+        </div>
     </div>
 </nav>
-<p id="boo">afe</p>
+
 <div class="container under_navbar">
 {% block content %}
 {% endblock %}
