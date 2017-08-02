@@ -12,7 +12,7 @@ nav {
     margin-top: 100px;
 }
 
-#navbar a,
+a#title,
 #navbar li a {
     color: #fff;
 }
@@ -51,6 +51,14 @@ ul {
 
 .navbar-right {
     margin-right: 15px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+.navbar-default .navbar-toggle:hover .icon-bar {
+    background-color: #2373B1;
 }
 
 
