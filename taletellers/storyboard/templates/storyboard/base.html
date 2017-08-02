@@ -12,7 +12,9 @@
 
 </head>
 <body>
-
+{% if request.user.is_authenticated %}
+    Merhaba, {{ request.user.username }}
+{% endif %}
 <nav class="navbar navbar-default navbar-fixed-top" id="navbar">
     <div class="container-fluid">
         <div class="navbar-header">

@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Sum
 from django.http import JsonResponse
 from django.urls import reverse
@@ -62,7 +63,7 @@ class AddContentFormView(generic.CreateView):
         return context
 
 
-class AddStoryFormView(generic.CreateView):
+class AddStoryFormView(LoginRequiredMixin, generic.CreateView):
     """
     Yeni hikaye oluşturmak için gerekli olan form sayfasının özelliklerini ayarlar.
     """

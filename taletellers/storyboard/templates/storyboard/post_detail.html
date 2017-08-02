@@ -1,10 +1,19 @@
 {% extends "storyboard/base.html" %}
 
+
+
 {% block content %}
 <h2>{{story_list.0.title}}</h2>
-
 {% for story in story_list  %}
-    <content_detail id="{{ story.id }}">{{ story.content }}.</content_detail>
+    <content_detail id="{{ story.id }}"
+                    role="button"
+                    data-container="body"
+                    data-toggle="popover"
+                    data-placement="top"
+                    data-html="auto"
+                    title="#{{ story.id }} {{ story.creation_time }}"
+                    data-content="<button  class='btn btn-default'>Like</button> Score: {{story.score}} <button  class='btn btn-default'>Like</button>"
+    >{{ story.content }}.</content_detail>
 {% endfor %}
 
 <p>
@@ -29,11 +38,8 @@
 
 {% block javascript %}
     <script>
-        $('content_detail').mouseover(function() {
-            $(this).css("background-color", "yellow")
-        });
-        $('content_detail').mouseout(function() {
-            $(this).css("background-color", "transparent")
+        $(function () {
+            $('[data-toggle="popover"]').popover()
         });
         $('content_detail').click(function() {
             var id = $(this).context.attributes.id.value;
