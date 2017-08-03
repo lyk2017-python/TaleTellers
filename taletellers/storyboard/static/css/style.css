@@ -17,7 +17,8 @@ nav {
 }
 
 .content {
-    font-size: 15px
+    font-size: 15px;
+    padding-left: 25px;
 }
 
 .well {
@@ -157,4 +158,25 @@ ul {
     width: 100%;
     color: #FFF;
     padding: 20px;
+}
+
+#order {
+    float: left;
+    font-size: 40px;
+    padding-top: 10px;
+
+}
+
+#score_star {
+    float: right;
+    font-size: 100px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.content-score {
+    position: absolute;
+    padding-left: 30px;
+    top: 27px;
+    font-size: 25px;
+    color: white;
 }
