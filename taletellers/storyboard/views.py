@@ -55,9 +55,11 @@ class AddContentFormView(generic.CreateView):
         """
         kwargs = super().get_form_kwargs()
         if self.request.method in ["POST", "PUT"]:
+            self.request
             post_data = kwargs["data"].copy()
             post_data["parent"] = self.kwargs["pk"]
             post_data["super_parent"] = get_object_or_404(Post, id=self.kwargs["pk"]).get_parents()[0].id
+            post_data["author"] = self.request.user.id
             kwargs["data"] = post_data
         return kwargs
 
@@ -90,6 +92,20 @@ class AddStoryFormView(LoginRequiredMixin, generic.CreateView):
     form_class = AddStoryForm
     template_name = "storyboard/post_add.html"
     success_url = "."
+
+    def get_form_kwargs(self):
+        """
+        Gönder butonuna basıldığında kullanıcının gönderdiği bilgilerin
+        yanında bizim de ek bilgi gönderebilmemizi sağlar. Bu fonksiyonda parent ve
+        super_parent bilgilerini girerek database'de ilişki kurmamızı sağlıyor.
+        """
+        kwargs = super().get_form_kwargs()
+        if self.request.method in ["POST", "PUT"]:
+            self.request
+            post_data = kwargs["data"].copy()
+            post_data["author"] = self.request.user.id
+            kwargs["data"] = post_data
+        return kwargs
 
     def get_context_data(self, **kwargs):
         """

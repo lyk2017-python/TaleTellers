@@ -25,7 +25,8 @@ class AddContentForm(forms.ModelForm):
         exclude = ["id", "score", "title"]
         widgets = {
             "parent": HiddenInput(),
-            "super_parent": HiddenInput()
+            "super_parent": HiddenInput(),
+            "author": HiddenInput()
         }
 
 
@@ -39,7 +40,8 @@ class AddStoryForm(forms.ModelForm):
         model = Post
         exclude = ["id", "score", "parent"]
         widgets = {
-            "super_parent": HiddenInput()
+            "super_parent": HiddenInput(),
+            "author": HiddenInput()
         }
 
 
