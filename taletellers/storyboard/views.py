@@ -71,6 +71,7 @@ class AddContentFormView(generic.CreateView):
         context = super().get_context_data(**kwargs)
         context["object"] = get_object_or_404(Post, id=self.kwargs["pk"])
         context["story_list"] = context["object"].get_parents()
+        context["top"] = Post.objects.filter(super_parent=context["story_list"][0]).order_by("-score")[0]
         return context
 
     @method_decorator(login_required)

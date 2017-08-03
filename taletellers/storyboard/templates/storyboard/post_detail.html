@@ -16,7 +16,9 @@
         text-decoration:inherit;
     }
 </style>
+<h1>"{{ top.content }}"</h1>
 <h2>{{story_list.0.title}}</h2>
+
 {% for story in story_list  %}
     <a id="{{ story.id }}"
         href="#"
@@ -37,7 +39,6 @@
                       </div>'
     >{{ story.content }}.</a>
 {% endfor %}
-
 <p>
 {% for child in object.children.all %}
     <a href="{% url 'story_detail' pk=child.pk %}">#{{ child.id }}</a> <br>
