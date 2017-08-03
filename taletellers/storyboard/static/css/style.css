@@ -18,12 +18,15 @@ nav {
 }
 
 .content {
-    font-size: 15px
+    font-size: 15px;
+    padding-left: 25px;
 }
 
 .well {
     position: relative;
+    padding: 5px;
     background-color: #f1f1f1;
+    margin-bottom: 10px;
 }
 
 .date {
@@ -170,4 +173,37 @@ div#footer {
     background-color: cadetblue;
     color: #FFF;
     width: 100%;
+}
+
+#order {
+    float: left;
+    font-size: 40px;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+
+}
+#border {
+    height: 70px;
+    width: 15px;
+    border-left: 2px solid #000;
+}
+
+#score_star {
+    position: absolute;
+    top: 5px;
+    float: right;
+    color: #ef5350;
+    font-size: 78px;
+}
+
+.content-score {
+    position: absolute;
+    left: 66px;
+    top: 30px;
+    font-size: 20px;
+    background: grey;
+    color: white;
+    text-align: center;
+    z-index: 1;
 }

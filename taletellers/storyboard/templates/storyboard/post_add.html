@@ -5,7 +5,7 @@
 <h2 style="text-align: center">Add a New Story</h2>
 
 {% if request.user.is_authenticated %}
-<div class="container">
+<div class="container content-align">
     <div class="col-md-offset-2 col-md-8 col-xs-offset-1 col-xs-10">
         <form action="." method="POST">
             {% csrf_token %}
@@ -16,7 +16,7 @@
 </div>
 {% endif %}
 <br><br>
-<h2 style="text-align: center">Last Updated Stories</h2>
+<h2 style="text-align: center">Latest Stories</h2>
 <br><br>
 <div class="container content-align">
     <div class="col-md-offset-2 col-md-8 col-xs-offset-1 col-xs-10">
