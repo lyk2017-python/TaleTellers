@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.core.mail import send_mail
 from django.utils.decorators import method_decorator
 from django.views import generic
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 
 from storyboard.forms import *
 from storyboard.models import Post
@@ -66,7 +66,10 @@ class AddContentFormView(generic.CreateView):
 
     @method_decorator(login_required)
     def post(self, request, *args, **kwargs):
-        return super().post(request, *args, **kwargs)
+        if fork_numbers(request):
+            return super().post(request, *args, **kwargs)
+        else:
+            return redirect('.')
 
 
 class AddStoryFormView(LoginRequiredMixin, generic.CreateView):
@@ -184,4 +187,11 @@ def like(request):
     obj.refresh_from_db()
     return JsonResponse({"like": obj.score, "id": id})
 
+
+def fork_numbers(request):
+    """Eger bir postun fork sayisi 3'ten kucukse true, buyukse false
+    dondurur. Fork sayisini kontrol etmek icin kullaniyoruz."""
+    id = request.resolver_match.kwargs["pk"]
+    children = Post.objects.filter(parent_id=id).count()
+    return children < 3
 
