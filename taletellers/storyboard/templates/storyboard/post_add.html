@@ -2,7 +2,7 @@
 {% load bootstrap3 %}
 
 {% block content %}
-<h2 style="text-align: center">Yeni Hikaye Ekle</h2>
+<h2 style="text-align: center">Add a New Story</h2>
 
 {% if request.user.is_authenticated %}
 <div class="container">
@@ -10,13 +10,13 @@
         <form action="." method="POST">
             {% csrf_token %}
             {% bootstrap_form form %}
-            <button type="submit" class="btn btn-primary">Gönder</button>
+            <button type="submit" class="btn btn-primary">Send</button>
         </form>
     </div>
 </div>
 {% endif %}
 <br><br>
-<h2 style="text-align: center">En Son Eklenen Hikayeler</h2>
+<h2 style="text-align: center">Last Updated Stories</h2>
 <br><br>
 <div class="container">
     <div class="col-md-offset-2 col-md-8 col-xs-offset-1 col-xs-10">
