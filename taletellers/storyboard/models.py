@@ -14,7 +14,7 @@ class Post(models.Model):
     score = models.IntegerField(default=0)
     parent = models.ForeignKey("self", blank=True, null=True, related_name="children")
     super_parent = models.ForeignKey("self", blank=True, null=True, related_name="super_children")
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, related_name="post")
 
     def __str__(self):
         # returns the id and the title of the Post class's objects when it's requested on manage.py's shell
