@@ -15,13 +15,14 @@ nav {
 .title {
     font-size: 20px
 }
+
 .content {
     font-size: 15px
 }
+
 .date {
-    border: 2px solid;
     border-radius: 25px;
-    margin-left: 510px;
+    margin-left: 450px;
     padding: 3px 0;
     text-align: center;
     background-color: #90caf9;
