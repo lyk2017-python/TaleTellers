@@ -2,16 +2,21 @@
 {% load bootstrap3 %}
 
 {% block content %}
-<div class="container" style="word-wrap:break-word">
+<div class="container content-align">
     <div class="col-md-offset-2 col-md-8 col-xs-offset-1 col-xs-10">
-        <div ><h1>"{{ top.content }}"</h1></div>
+        <div class="title">
+            <blockquote>
+                <p>{{ top.content }}</p>
+                <footer>Author</footer>
+            </blockquote>
+        </div>
         <br>
-        <h2>{{story_list.0.title}}</h2>
+        <div class="title">{{story_list.0.title}}</div>
 
         {% for story in story_list  %}
             <a id="{{ story.id }}"
                 href="#"
-                class="storya"
+                class="storya content"
                 style="color:black" :hover
                 role="button"
                 data-container="body"
@@ -35,19 +40,71 @@
                 </p>
                 <p><--THE END--></p>
             {% endfor %}
-
-
-<hr>
-{% if object.children.count < 3 %}
-<form action="." method="POST" class="form">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    <button type="submit" class="btn btn-primary">Gönder</button>
-</form>
-{% else %}
-<div>You have reached the maximum amount of forks. Please read on.</div>
-{% endif %}
+        <br><br>
+        {% if object.children.count < 3 %}
+            <form action="." method="POST" class="form">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <button type="submit" class="btn btn-primary">Gönder</button>
+            </form>
+        {% else %}
+            <div>You have reached the maximum amount of forks. Please read on.</div>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
 
 {% block javascript %}
+<script>
+    $(function () {
+    $('[data-toggle="popover"]').popover()
+    });
+    $('[data-toggle="popover"]').click(function () {
+    });
+    $('.storya').click(function() {
+        var id = $(this).context.attributes.id.value;
+
+    $.ajax({
+        url: '{% url "ulr" %}',
+        data: {
+            'id': id
+        },
+        dataType: "json",
+        success: function(data) {
+            $('.boru').text(data.score);
+        }
+    });
+    });
+    $(document).on("click", "#like_button", function() {
+        var id = $(this).context.attributes.name.value;
+        $.ajax({
+            data: {
+                "like": "true",
+                "id": id
+            },
+            url: "{% url "like_dislike" %}",
+            success: function (data) {
+                $('.boru').text(data.like);
+            }
+        }
+    )});
+    $(document).on("click", "#dislike_button", function() {
+        var id = $(this).context.attributes.name.value;
+        $.ajax({
+            data: {
+                "like": "false",
+                "id": id
+            },
+            url: "{% url "like_dislike" %}",
+            success: function (data) {
+                $('.boru').text(data.like);
+            }
+        }
+    )}
+    );
+    $(document).on("click", "#close_button", function() {
+         $('[data-toggle="popover"]').popover("hide")
+         $('[data-toggle="popover"]').popover()
+});
+</script>
 {% endblock %}

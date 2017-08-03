@@ -28,11 +28,20 @@ nav {
     border: 2px solid #90caf9;
     border-radius: 13px 5px 13px 5px;
     padding: 3px;
-    margin: -10px;
+    margin: -15px;
     float: right;
     text-align: center;
     color: #90caf9;
 }
+
+.content-align {
+    word-wrap: break-word;
+}
+
+.tab {
+    margin: 0 30px;
+}
+
 
 a#home,
 #navbar li a {
