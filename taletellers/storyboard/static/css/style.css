@@ -1,6 +1,5 @@
 /*https://codepen.io/yavuzovski/pen/XKjjdV*/
 
-
 nav {
     padding: 10px;
     background-color: #2373B1 !important;
@@ -10,9 +9,26 @@ nav {
 
 .under_navbar {
     margin-top: 100px;
+    max-width: 100%;
 }
 
-a#title,
+.title {
+    font-size: 20px
+}
+.content {
+    font-size: 15px
+}
+.date {
+    border: 2px solid;
+    border-radius: 25px;
+    margin-left: 510px;
+    padding: 3px 0;
+    text-align: center;
+    background-color: #90caf9;
+    color:#fff;
+}
+
+a#home,
 #navbar li a {
     color: #fff;
 }
@@ -47,6 +63,7 @@ ul {
     margin: 0px;
     border-right:2px dashed #fff;
     font-size: x-large;
+    overflow: auto !important;
 }
 
 .navbar-right {
