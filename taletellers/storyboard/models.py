@@ -18,6 +18,11 @@ class Post(models.Model):
         # returns the id and the title of the Post class's objects when it's requested on manage.py's shell
         return "#{0} {1}".format(self.id, self.title)
 
+    def can_fork(self):
+        """Eger bir postun fork sayisi 3'ten kucukse true, buyukse false
+        dondurur. Fork sayisini kontrol etmek icin kullaniyoruz."""
+        return self.children.count() < 3
+
     def get_parents(self, exclude_self=False):
         """
         Herhangi bir postun bütün parentlarını içeren ve ilk posttan başlayarak sıralayan

@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Sum, F
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, HttpResponse, HttpResponseForbidden
 from django.urls import reverse
 from django.core.mail import send_mail
 from django.utils.decorators import method_decorator
@@ -76,10 +76,11 @@ class AddContentFormView(generic.CreateView):
 
     @method_decorator(login_required)
     def post(self, request, *args, **kwargs):
-        if fork_numbers(request):
+        obj = get_object_or_404(Post, id=self.kwargs["pk"])
+        if obj.can_fork():
             return super().post(request, *args, **kwargs)
         else:
-            return redirect('.')
+            return HttpResponseForbidden("<h1>403 FORBIDDEN</h1>")
 
 
 class AddStoryFormView(LoginRequiredMixin, generic.CreateView):
@@ -198,10 +199,4 @@ def like(request):
     return JsonResponse({"like": obj.score, "id": id})
 
 
-def fork_numbers(request):
-    """Eger bir postun fork sayisi 3'ten kucukse true, buyukse false
-    dondurur. Fork sayisini kontrol etmek icin kullaniyoruz."""
-    id = request.resolver_match.kwargs["pk"]
-    children = Post.objects.filter(parent_id=id).count()
-    return children < 3
 

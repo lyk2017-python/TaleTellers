@@ -47,12 +47,15 @@
 <p><--SON--></p>
 {% endfor %}
 <hr>
-
+{% if object.children.count < 3 %}
 <form action="." method="POST" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
     <button type="submit" class="btn btn-primary">Gönder</button>
 </form>
+{% else %}
+<div>You have reached the maximum amount of forks. Please read on.</div>
+{% endif %}
 {% endblock %}
 
 {% block javascript %}
