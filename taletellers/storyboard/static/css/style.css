@@ -170,11 +170,16 @@ ul {
     margin: 0px;
     text-align: center;
 
+    border-right: 2px solid #000;
+
 }
 #border {
-    height: 70px;
+    margin-top: 45px;
+ #   padding: 0px;
     width: 15px;
-    border-left: 2px solid #000;
+    -moz-transform: rotate(-90deg);
+    text-align: center;
+    text-decoration: italic;
 }
 
 #score_star {
