@@ -55,7 +55,6 @@ class AddContentFormView(generic.CreateView):
         """
         kwargs = super().get_form_kwargs()
         if self.request.method in ["POST", "PUT"]:
-            self.request
             post_data = kwargs["data"].copy()
             post_data["parent"] = self.kwargs["pk"]
             post_data["super_parent"] = get_object_or_404(Post, id=self.kwargs["pk"]).get_parents()[0].id
@@ -101,7 +100,6 @@ class AddStoryFormView(LoginRequiredMixin, generic.CreateView):
         """
         kwargs = super().get_form_kwargs()
         if self.request.method in ["POST", "PUT"]:
-            self.request
             post_data = kwargs["data"].copy()
             post_data["author"] = self.request.user.id
             kwargs["data"] = post_data
