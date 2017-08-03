@@ -26,7 +26,7 @@ class HomeView(generic.ListView):
             for i in Post.objects.filter(parent__isnull=True):
                 children = Post.objects.filter(super_parent=i).latest()
                 post_list.append(children.id)
-            post_list = [i.super_parent for i in Post.objects.filter(id__in=post_list).order_by("-creation_time")]
+            post_list = [(i.super_parent, i.creation_time) for i in Post.objects.filter(id__in=post_list).order_by("-creation_time")]
         else:
             post_list = []
         return post_list
