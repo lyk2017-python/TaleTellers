@@ -22,8 +22,8 @@ nav {
 
 .date {
     border-radius: 25px;
-    margin-left: 450px;
     padding: 3px 0;
+    float: right;
     text-align: center;
     background-color: #90caf9;
     color:#fff;
