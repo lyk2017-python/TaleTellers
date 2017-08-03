@@ -1,9 +1,10 @@
-
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Sum, F
 from django.http import JsonResponse, HttpResponse
 from django.urls import reverse
 from django.core.mail import send_mail
+from django.utils.decorators import method_decorator
 from django.views import generic
 from django.shortcuts import get_object_or_404
 
@@ -62,6 +63,10 @@ class AddContentFormView(generic.CreateView):
         context["object"] = get_object_or_404(Post, id=self.kwargs["pk"])
         context["story_list"] = context["object"].get_parents()
         return context
+
+    @method_decorator(login_required)
+    def post(self, request, *args, **kwargs):
+        return super().post(request, *args, **kwargs)
 
 
 class AddStoryFormView(LoginRequiredMixin, generic.CreateView):
