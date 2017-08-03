@@ -16,8 +16,7 @@
         text-decoration:inherit;
     }
 </style>
-<h1>"{{ top.content }}"</h1>
-<h2>{{story_list.0.title}}</h2>
+<h2>{{story_list.0.title|title}}</h2>
 
 {% for story in story_list  %}
     <a id="{{ story.id }}"
@@ -44,14 +43,14 @@
     <a href="{% url 'story_detail' pk=child.pk %}">#{{ child.id }}</a> <br>
 {% empty %}
 </p>
-<p><--SON--></p>
+<p><--THE END--></p>
 {% endfor %}
 <hr>
 
 <form action="." method="POST" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
-    <button type="submit" class="btn btn-primary">Gönder</button>
+    <button type="submit" class="btn btn-primary">Send</button>
 </form>
 {% endblock %}
 
