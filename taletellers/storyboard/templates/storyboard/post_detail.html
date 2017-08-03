@@ -1,58 +1,50 @@
 {% extends "storyboard/base.html" %}
 {% load bootstrap3 %}
 
-
 {% block content %}
-<style>
-    .storya{
-        color: black
-    }
-    .storya:hover{
-        color: black;
-        text-decoration:inherit;
-    }
-    .storya:focus{
-        color: black;
-        text-decoration:inherit;
-    }
-</style>
-<h1>"{{ top.content }}"</h1>
-<h2>{{story_list.0.title}}</h2>
+<div class="container">
+    <div class="col-md-offset-2 col-md-8 col-xs-offset-1 col-xs-10">
+        <h1>"{{ top.content }}"</h1>
+        <br>
+        <h2>{{story_list.0.title}}</h2>
 
-{% for story in story_list  %}
-    <a id="{{ story.id }}"
-        href="#"
-        class="storya"
-        style="color:black" :hover
-        role="button"
-        data-container="body"
-        data-toggle="popover"
-        #data-trigger="focus"
-        data-placement="top"
-        data-html="auto"
-        title="#{{ story.id }} {{ story.creation_time }} <span style:'align:right' class='glyphicon glyphicon-remove-circle' id=close_button></span>"
-        data-content='<div style="text-align:center" >
-                            <a href="..\{{ story.id }}" class="glyphicon glyphicon-copy" aria-hidden="true"></a>
-                            <span class="glyphicon glyphicon-chevron-up" name={{story.id}} id="like_button" aria-hidden="true"></span>
-                              Score: <span class="boru"></span>
-                            <span class="glyphicon glyphicon-chevron-down" name={{story.id}} id="dislike_button" aria-hidden="true"></span>
-                      </div>'
-    >{{ story.content }}.</a>
-{% endfor %}
-<p>
-{% for child in object.children.all %}
-    <a href="{% url 'story_detail' pk=child.pk %}">#{{ child.id }}</a> <br>
-{% empty %}
-</p>
-<p><--SON--></p>
-{% endfor %}
-<hr>
+        {% for story in story_list  %}
+            <a id="{{ story.id }}"
+                href="#"
+                class="storya"
+                style="color:black" :hover
+                role="button"
+                data-container="body"
+                data-toggle="popover"
+                #data-trigger="focus"
+                data-placement="top"
+                data-html="auto"
+                title="#{{ story.id }} {{ story.creation_time }} <span style:'align:right' class='glyphicon glyphicon-remove-circle' id=close_button></span>"
+                data-content='<div style="text-align:center" >
+                                    <a href="..\{{ story.id }}" class="glyphicon glyphicon-copy" aria-hidden="true"></a>
+                                    <span class="glyphicon glyphicon-chevron-up" name={{story.id}} id="like_button" aria-hidden="true"></span>
+                                      Score: <span class="boru"></span>
+                                    <span class="glyphicon glyphicon-chevron-down" name={{story.id}} id="dislike_button" aria-hidden="true"></span>
+                              </div>'
+                >{{ story.content }}.</a>
+        {% endfor %}
+        <p>
+            {% for child in object.children.all %}
+                <a href="{% url 'story_detail' pk=child.pk %}">#{{ child.id }}</a> <br>
+            {% empty %}
+                </p>
+                <p><--THE END--></p>
+            {% endfor %}
 
-<form action="." method="POST" class="form">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    <button type="submit" class="btn btn-primary">Gönder</button>
-</form>
+        <br><br>
+
+        <form action="." method="POST" class="form">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button type="submit" class="btn btn-primary">Gönder</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
 
 {% block javascript %}

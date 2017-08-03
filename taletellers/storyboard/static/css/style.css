@@ -84,6 +84,19 @@ ul {
     background-color: #2373B1;
 }
 
+.storya {
+        color: black
+}
+
+.storya:hover {
+    color: black;
+    text-decoration:inherit;
+}
+
+.storya:focus {
+    color: black;
+    text-decoration:inherit;
+}
 
 /* Push */
 @-webkit-keyframes hvr-push {
