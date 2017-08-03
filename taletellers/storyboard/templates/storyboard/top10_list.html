@@ -11,11 +11,11 @@
                     {{ no }}
                 </div>
                 <div class="col-sm-1" id="border">
+                    {{ post.author }}
                 </div>
                     <div class="col-sm-8">
                     <a href="{% url 'story_detail' pk=post.pk %}" class="title">{{ post.title|title }}</a>
                         <p>{{ post.content }}</p>
-                        <p>{{ post.author }}</p>
                 </div>
                 <div class="col-sm-2" style="position:relative">
                     <i class="glyphicon glyphicon-heart" id="score_star"></i>

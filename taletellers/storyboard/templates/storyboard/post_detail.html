@@ -30,8 +30,13 @@
                                     <span class="glyphicon glyphicon-chevron-up" name={{story.id}} id="like_button" aria-hidden="true"></span>
                                       Score: <span class="boru"></span>
                                     <span class="glyphicon glyphicon-chevron-down" name={{story.id}} id="dislike_button" aria-hidden="true"></span>
-                              </div>'
-                >{{ story.content }}</a>
+                              </div>'>
+                {% if story.content|slice:"-1" == "." %}
+                    {{ story.content }}
+                {% else %}
+                    {{ story.content }}.
+                {% endif %}
+            </a>
         {% endfor %}
         <p>
             {% for child in object.children.all %}
