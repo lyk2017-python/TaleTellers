@@ -26,7 +26,7 @@
                                       Score: <span class="boru"></span>
                                     <span class="glyphicon glyphicon-chevron-down" name={{story.id}} id="dislike_button" aria-hidden="true"></span>
                               </div>'
-                >{{ story.content }}.</a>
+                >{{ story.content }}</a>
         {% endfor %}
         <p>
             {% for child in object.children.all %}
@@ -42,7 +42,7 @@
 <form action="." method="POST" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
-    <button type="submit" class="btn btn-primary">Gönder</button>
+    <button type="submit" class="btn btn-primary">Send</button>
 </form>
 {% else %}
 <div>You have reached the maximum amount of forks. Please read on.</div>
@@ -102,4 +102,6 @@
              $('[data-toggle="popover"]').popover()
         });
     </script>
+    </div>
+</div>
 {% endblock %}
