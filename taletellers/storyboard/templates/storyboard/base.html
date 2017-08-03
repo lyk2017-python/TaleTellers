@@ -32,8 +32,13 @@
             </ul>
             <ul class="nav navbar-nav navbar-right" id="nav-icons">
                 <ul class="nav navbar-nav navbar-right nav-hide">
-                    <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    {% if not request.user.is_authenticated %}
+                        <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    {% else %}
+                        <li><a href="#">Merhaba, {{ request.user.username }}</a></li>
+                        <li><a href='{% url 'logout' %}'><span class='glyphicon glyphicon-user'></span> Log out</a></li>
+                    {% endif %}
                 </ul>
             </ul>
         </div>
@@ -69,17 +74,5 @@
 
 {% block javascript %}
 {% endblock %}
-
-{% if request.user.is_authenticated %}
-    <script>
-        $('.nav-hide').prop('hidden', true);
-        $('#nav-icons').append("<li><a href='{% url 'logout' %}'><span class='glyphicon glyphicon-user'></span> Log out</a></li>");
-    </script>
-{% else %}
-    <script>
-        $('.nav-hide').prop('hidden', false);
-    </script>
-{% endif %}
-
 </body>
 {% endblock %}

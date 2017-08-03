@@ -46,5 +46,9 @@
             </ul>
         {% endif %}
     </div>
+
+{% for user, score in top_users %}
+    {{ user }}: {{ score }}
+{% endfor %}
 {% endblock %}
 

@@ -1,3 +1,4 @@
+from django.conf.global_settings import AUTH_USER_MODEL as User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Sum, F
@@ -7,6 +8,7 @@ from django.core.mail import send_mail
 from django.utils.decorators import method_decorator
 from django.views import generic
 from django.shortcuts import get_object_or_404
+
 
 from storyboard.forms import *
 from storyboard.models import Post
@@ -30,6 +32,14 @@ class HomeView(generic.ListView):
         else:
             post_list = []
         return post_list
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        top_users = []
+        for i in User.objects.all():
+            top_users.append((i,  i.post.all().aggregate(Sum("score"))["score__sum"]))
+        context["top_users"] = sorted(top_users, key=lambda x: x[1], reverse=True)
+        return context
 
 
 class AddContentFormView(generic.CreateView):
@@ -55,7 +65,6 @@ class AddContentFormView(generic.CreateView):
         """
         kwargs = super().get_form_kwargs()
         if self.request.method in ["POST", "PUT"]:
-            self.request
             post_data = kwargs["data"].copy()
             post_data["parent"] = self.kwargs["pk"]
             post_data["super_parent"] = get_object_or_404(Post, id=self.kwargs["pk"]).get_parents()[0].id
@@ -101,7 +110,6 @@ class AddStoryFormView(LoginRequiredMixin, generic.CreateView):
         """
         kwargs = super().get_form_kwargs()
         if self.request.method in ["POST", "PUT"]:
-            self.request
             post_data = kwargs["data"].copy()
             post_data["author"] = self.request.user.id
             kwargs["data"] = post_data
@@ -113,7 +121,7 @@ class AddStoryFormView(LoginRequiredMixin, generic.CreateView):
         template üzerinden bu isimle çekip işlem yapabilriz.
         """
         context = super().get_context_data(**kwargs)
-        context["post_list"] = list(Post.objects.filter(parent__isnull=True))
+        context["post_list"] = list(Post.objects.filter(parent__isnull=True))[:10]
         return context
 
 
