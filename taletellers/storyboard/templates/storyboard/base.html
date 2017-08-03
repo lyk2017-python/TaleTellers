@@ -44,7 +44,7 @@
                         <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                         <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     {% else %}
-                        <li><a href="#">Merhaba, {{ request.user.username }}</a></li>
+                        <li><a>Merhaba, {{ request.user.username }}</a></li>
                         <li><a href='{% url 'logout' %}'><span class='glyphicon glyphicon-user'></span> Log out</a></li>
                     {% endif %}
                 </ul>
@@ -79,8 +79,5 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-
-{% block javascript %}
-{% endblock %}
 </body>
 {% endblock %}
