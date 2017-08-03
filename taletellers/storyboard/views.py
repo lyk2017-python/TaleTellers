@@ -121,7 +121,7 @@ class AddStoryFormView(LoginRequiredMixin, generic.CreateView):
         template üzerinden bu isimle çekip işlem yapabilriz.
         """
         context = super().get_context_data(**kwargs)
-        context["post_list"] = list(Post.objects.filter(parent__isnull=True))
+        context["post_list"] = list(Post.objects.filter(parent__isnull=True))[:10]
         return context
 
 
