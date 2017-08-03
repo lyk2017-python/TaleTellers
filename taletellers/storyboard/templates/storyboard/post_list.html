@@ -6,15 +6,16 @@
     <div class="container content-align">
         <div class="col-md-offset-2 col-md-8 col-xs-offset-1 col-xs-10">
             <ul>
-                {% for post, child in object_list %}
+                {% for post, child_date in object_list %}
                     <div class="well well-lg">
                         <li>
                             <p>
                                 <a href="{% url 'story_detail' pk=post.pk %}" class="title">{{ post.title|title }}</a>
                             </p>
                             <p class="content tab">{{ post.content|truncatewords:5 }}<br><br></p>
+                            <p>User: {{ post.author.username }}</p>
                             <div class="date">
-                                {{ child }}
+                                {{ child_date }}
                             </div>
                         </li>
                     </div>

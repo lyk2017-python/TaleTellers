@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -13,6 +14,7 @@ class Post(models.Model):
     score = models.IntegerField(default=0)
     parent = models.ForeignKey("self", blank=True, null=True, related_name="children")
     super_parent = models.ForeignKey("self", blank=True, null=True, related_name="super_children")
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True)
 
     def __str__(self):
         # returns the id and the title of the Post class's objects when it's requested on manage.py's shell
@@ -58,3 +60,5 @@ def add_super_parent_to_first_post(sender, instance, *args, **kwargs):
     """
     if instance.title:
         sender.objects.filter(id=instance.id).update(super_parent=instance)
+
+
