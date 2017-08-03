@@ -12,51 +12,49 @@
 
 </head>
 <body>
-
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid ">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" id="home" href="/">TaleTellers</a>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar">
-            <ul class="nav navbar-nav">
-                <li><a class="hvr-push" href="{% url 'top10' %}">TOP STORIES</a></li>
-                <li><a class="hvr-push" href="{% url 'add_story' %}">NEW STORY</a></li>
-                <li><a class="hvr-push" href="{% url 'faq' %}">FAQ</a></li>
-                <li><a class="hvr-push" href="{% url 'contact' %}">CONTACT</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right" id="nav-icons">
-                <ul class="nav navbar-nav navbar-right nav-hide">
-                    {% if not request.user.is_authenticated %}
-                        <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                        <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    {% else %}
-                        <li><a href="#">Merhaba, {{ request.user.username }}</a></li>
-                        <li><a href='{% url 'logout' %}'><span class='glyphicon glyphicon-user'></span> Log out</a></li>
-                    {% endif %}
+<div id="wrapper">
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid ">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" id="home" href="/">TaleTellers</a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li><a class="hvr-push" href="{% url 'top10' %}">TOP STORIES</a></li>
+                    <li><a class="hvr-push" href="{% url 'add_story' %}">NEW STORY</a></li>
+                    <li><a class="hvr-push" href="{% url 'faq' %}">FAQ</a></li>
+                    <li><a class="hvr-push" href="{% url 'contact' %}">CONTACT</a></li>
                 </ul>
-            </ul>
+                <ul class="nav navbar-nav navbar-right" id="nav-icons">
+                    <ul class="nav navbar-nav navbar-right nav-hide">
+                        {% if not request.user.is_authenticated %}
+                            <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                            <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        {% else %}
+                            <li><a href="#">Merhaba, {{ request.user.username }}</a></li>
+                            <li><a href="{% url 'logout' %}"><span class='glyphicon glyphicon-user'></span> Log out</a></li>
+                        {% endif %}
+                    </ul>
+                </ul>
+            </div>
         </div>
+    </nav>
     </div>
-</nav>
-
-<div class="container-fluid under_navbar">
-    <div class="">
+    <div class="container-fluid under_navbar" id="body">
         {% block content %}
         {% endblock %}
     </div>
-</div>
 
-<!--Footer-->
-<div class="container" id="footer" style="text-align: center">
-    <div class="row">
+    <!--Footer-->
+    <div class="container" id="footer" style="text-align: center">
         <div class="col-xs-6">
-            <h4>Made by <a href="https://github.com/orgs/lyk2017-django/teams/africa/members" target="_blank">Team Africa</a></h4>
+            <h5>Made by <a href="https://github.com/orgs/lyk2017-django/teams/africa/members" target="_blank">Team Africa</a></h5>
         </div>
         <div class="col-xs-6">
             <a href="https://github.com/lyk2017-django/TaleTellers" class="button" target='_blank'><img

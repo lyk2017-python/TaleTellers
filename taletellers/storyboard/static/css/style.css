@@ -10,6 +10,7 @@ nav {
 .under_navbar {
     margin-top: 100px;
     max-width: 100%;
+    padding-bottom: 50px;
 }
 
 .title {
@@ -21,6 +22,7 @@ nav {
 }
 
 .well {
+    position: relative;
     background-color: #f1f1f1;
 }
 
@@ -35,8 +37,9 @@ nav {
 }
 
 .author {
-    padding: 3px;
-    float: top;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 .content-align {
@@ -153,13 +156,17 @@ ul {
     -webkit-animation-iteration-count: 1;
     animation-iteration-count: 1;
 }
-
-#footer {
-    position: absolute;
-    padding: 20px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
+div#wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+}
+div#footer {
+    position: fixed;
+    padding: 10px;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background-color: cadetblue;
     color: #FFF;
     width: 100%;
