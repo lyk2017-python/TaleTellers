@@ -25,15 +25,7 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar">
             <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">STORIES
-                      <span class="caret"></span></a>
-                    <ul class="dropdown-menu" id="nav-dropdown">
-                        <li><a href="{% url 'top10' %}" id="">Top Stories</a></li>
-                        <li><a href="#">Finished Stories</a></li>
-                        <li><a href="#">Continuing Stories</a></li>
-                    </ul>
-                </li>
+                <li><a class="hvr-push" href="{% url 'top10' %}">TOP STORIES</a></li>
                 <li><a class="hvr-push" href="{% url 'add_story' %}">NEW STORY</a></li>
                 <li><a class="hvr-push" href="{% url 'faq' %}">FAQ</a></li>
                 <li><a class="hvr-push" href="{% url 'contact' %}">CONTACT</a></li>
@@ -56,7 +48,7 @@
 </div>
 
 <!--Footer-->
-<div class="container" id="final" style="text-align: center;">
+<div class="container" id="footer" style="text-align: center">
     <div class="row">
         <div class="col-xs-6">
             <h4>Made by <a href="https://github.com/orgs/lyk2017-django/teams/africa/members" target="_blank">Team Africa</a></h4>

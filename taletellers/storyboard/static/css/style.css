@@ -154,11 +154,13 @@ ul {
     animation-iteration-count: 1;
 }
 
-#final {
-    background-color: cadetblue;
-    bottom: 0;
-    margin-top: 40px;
-    width: 100%;
-    color: #FFF;
+#footer {
+    position: absolute;
     padding: 20px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: cadetblue;
+    color: #FFF;
+    width: 100%;
 }
