@@ -13,7 +13,7 @@
                                 <a href="{% url 'story_detail' pk=post.pk %}" class="title">{{ post.title|title }}</a>
                             </p>
                             <p class="content tab">{{ post.content|truncatewords:5 }}<br><br></p>
-                            <p>User: {{ post.author.username }}</p>
+                            <div class="author">Author: {{ post.author.username }}</div>
                             <div class="date">
                                 {{ child_date }}
                             </div>
