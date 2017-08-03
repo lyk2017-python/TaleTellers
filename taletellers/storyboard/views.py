@@ -17,10 +17,19 @@ class HomeView(generic.ListView):
     Anasayfada skora göre sıralı ilk 5 hikayenin gösterilmesini sağlar. Ancak sadece
     birinci postun (yani başlıklı postun) skoruna bakıyor
     """
+    template_name = "storyboard/post_list.html"
     paginate_by = 5
 
     def get_queryset(self):
-        return Post.objects.filter(parent__isnull=True).order_by("-creation_time")
+        post_list = []
+        if Post.objects.all():
+            for i in Post.objects.filter(parent__isnull=True):
+                children = Post.objects.filter(super_parent=i).latest()
+                post_list.append(children.id)
+            post_list = [(i.super_parent, i.creation_time) for i in Post.objects.filter(id__in=post_list).order_by("-creation_time")]
+        else:
+            post_list = []
+        return post_list
 
 
 class AddContentFormView(generic.CreateView):

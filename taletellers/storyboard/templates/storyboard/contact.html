@@ -3,9 +3,13 @@
 {% load bootstrap3 %}
 
 {% block content %}
-    <form action="." method="POST">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        <button type="submit" class="btn btn-primary">Gönder</button>
-    </form>
+<div class="container">
+    <div class="col-md-offset-2 col-md-8 col-xs-offset-1 col-xs-10">
+        <form action="." method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button type="submit" class="btn btn-primary">Gönder</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

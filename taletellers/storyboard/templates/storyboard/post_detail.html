@@ -28,8 +28,9 @@
         #data-trigger="focus"
         data-placement="top"
         data-html="auto"
-        title="#{{ story.id }} {{ story.creation_time }}"
+        title="#{{ story.id }} {{ story.creation_time }} <span style:'align:right' class='glyphicon glyphicon-remove-circle' id=close_button></span>"
         data-content='<div style="text-align:center" >
+                            <a href="..\{{ story.id }}" class="glyphicon glyphicon-copy" aria-hidden="true"></a>
                             <span class="glyphicon glyphicon-chevron-up" name={{story.id}} id="like_button" aria-hidden="true"></span>
                               Score: <span class="boru"></span>
                             <span class="glyphicon glyphicon-chevron-down" name={{story.id}} id="dislike_button" aria-hidden="true"></span>
@@ -101,5 +102,9 @@
             }
         )}
         );
+        $(document).on("click", "#close_button", function() {
+             $('[data-toggle="popover"]').popover("hide")
+             $('[data-toggle="popover"]').popover()
+        });
     </script>
 {% endblock %}
