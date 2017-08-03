@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.core.mail import send_mail
 from django.utils.decorators import method_decorator
 from django.views import generic
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404
 
 from storyboard.forms import *
 from storyboard.models import Post
