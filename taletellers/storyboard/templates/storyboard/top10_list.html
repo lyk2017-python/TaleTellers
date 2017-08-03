@@ -1,7 +1,10 @@
 {% extends "storyboard/base.html" %}
 
 {% block content %}
-
+<h2 style="text-align: center">Kullanıcıların En Çok Beğendiği 10 Hikaye</h2>
+    <br><br>
+    <div class="container">
+        <div class="col-md-offset-2 col-md-8 col-xs-offset-1 col-xs-10">
 {% for no, post, score_sum in object_list%}
     <h3>{{ no }}. <a href="{% url 'story_detail' pk=post.pk %}">{{ post.title }}</a></h3>
 <p>{{ post.content }} | Puan: {{ score_sum }}</p>
@@ -29,4 +32,6 @@
         {% endif %}
     </ul>
 {% endif %}
+        </div>
+    </div>
 {% endblock %}

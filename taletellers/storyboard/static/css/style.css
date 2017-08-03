@@ -20,13 +20,18 @@ nav {
     font-size: 15px
 }
 
+.well {
+    background-color: #f1f1f1;
+}
+
 .date {
-    border-radius: 25px;
-    padding: 3px 0;
+    border: 2px solid #90caf9;
+    border-radius: 13px 5px 13px 5px;
+    padding: 3px;
+    margin: -10px;
     float: right;
     text-align: center;
-    background-color: #90caf9;
-    color:#fff;
+    color: #90caf9;
 }
 
 a#home,
