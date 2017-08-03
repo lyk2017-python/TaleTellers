@@ -24,6 +24,7 @@
     </div>
 
     {% if is_paginated %}
+        <div class="col-md-offset-2 col-md-8 col-xs-offset-1 col-xs-10">
         <ul class="pagination">
             {% if page_obj.has_previous %}
                 <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
@@ -43,5 +44,6 @@
                 <li class="disabled"><span>&raquo;</span></li>
             {% endif %}
         </ul>
+        </div>
     {% endif %}
 {% endblock %}
