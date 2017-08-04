@@ -6,12 +6,12 @@
     <div class="col-md-offset-2 col-md-8 col-xs-offset-1 col-xs-10">
         <div class="title">
             <blockquote>
-                <p><i>{{ top.content }}</i></p>
+                <p><i>{{ top.content|capfirst }}</i></p>
                 <footer>{{ top.author.username }}</footer>
             </blockquote>
         </div>
         <br>
-        <div class="title"><strong>{{story_list.0.title}}</strong></div>
+        <div class="title"><strong>{{ story_list.0.title|title }}</strong></div>
         <br>
         {% for story in story_list  %}
             <a id="{{ story.id }}"
@@ -31,11 +31,7 @@
                                     <strong><span class="boru"></span>
                                     <span style="color:#a92200" class="glyphicon glyphicon-chevron-down" name={{story.id}} id="dislike_button" aria-hidden="true"></span>
                               </div>'>
-                {% if story.content|slice:"-1" == "." %}
-                    {{ story.content }}
-                {% else %}
-                    {{ story.content }}
-                {% endif %}
+                {{ story.content|capfirst }}
             </a>
         {% endfor %}
         <p>
