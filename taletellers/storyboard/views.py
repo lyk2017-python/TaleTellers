@@ -185,7 +185,7 @@ class Top10View(generic.ListView):
                 sorted_score_list = sorted(score_list.items(), key=lambda x: x[1], reverse=True)
         else:
             sorted_score_list = []
-        return [(i+1, e, f) for i, (e, f) in enumerate(sorted_score_list)]
+        return [(i+1, e, f) for i, (e, f) in enumerate(sorted_score_list)][:10]
 
 
 def user_like_response(request):
