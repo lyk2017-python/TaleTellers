@@ -1,10 +1,35 @@
-/*https://codepen.io/yavuzovski/pen/XKjjdV*/
+body {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
 
 nav {
     padding: 10px;
-    background-color: #2373B1 !important;
+    background-color: #263238 !important;
     border: hidden;
     color: #fff;
+}
+
+h2 {
+    color: #e64a19;
+}
+
+a {
+    text-decoration: none !important;
+    color: #bf360c;
+}
+
+a:hover {
+    color: #f4511e;
+}
+
+.post-detail {
+    border-radius: 5px;
+    border-color: #263238 !important;
+}
+
+.post-detail:hover {
+    background-color: #f1f1f1;
+    color: #bf360c;
 }
 
 .under_navbar {
@@ -15,11 +40,11 @@ nav {
 }
 
 .title {
-    font-size: 20px
+    font-size: 25px
 }
 
 .content {
-    font-size: 15px;
+    font-size: 18px;
 }
 
 .well {
@@ -30,19 +55,20 @@ nav {
 }
 
 .date {
-    border: 2px solid #90caf9;
+    border: 1px solid #78909c;
     border-radius: 13px 5px 13px 5px;
     padding: 3px;
     margin: -15px;
     float: right;
     text-align: center;
-    color: #90caf9;
+    color: #78909c;
 }
 
 .author {
     position: absolute;
     top: 10px;
     right: 10px;
+    color: #78909c;
 }
 
 .content-align {
@@ -64,21 +90,12 @@ a#home,
 }
 
 #nav-dropdown li a {
-    color: #2373B1;
+    color: #263238;
 }
 
 #nav-icons li a:hover,
 .navbar-right li a span:hover {
-    color: #90caf9;
-}
-
-#nav-dropdown li a:hover {
-    background-color: #2373B1;
-    color: #fff;
-}
-
-#nav-dropdown {
-    background-color: #f1f1f1;
+    color: #b0bec5;
 }
 
 ul {
@@ -87,7 +104,7 @@ ul {
 
 .navbar-brand {
     margin: 0px;
-    border-right:2px dashed #fff;
+    border-right:2px dashed #d84315;
     font-size: x-large;
     overflow: auto !important;
 }
@@ -101,7 +118,7 @@ ul {
 }
 
 .navbar-default .navbar-toggle:hover .icon-bar {
-    background-color: #2373B1;
+    background-color: #263238;
 }
 
 .storya {
@@ -159,20 +176,17 @@ ul {
     -webkit-animation-iteration-count: 1;
     animation-iteration-count: 1;
 }
-div#wrapper {
-    position: relative;
-    width: 100%;
-    min-height: 100%;
-}
-div#footer {
+
+#footer {
     position: fixed;
     padding: 10px;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: cadetblue;
+    background-color: #37474f;
     color: #FFF;
     width: 100%;
+    margin-top: 20px;
 }
 
 #order {
@@ -181,13 +195,12 @@ div#footer {
     padding: 0px;
     margin: 0px;
     text-align: center;
-
     border-right: 2px solid #000;
 
 }
+
 #border {
     margin-top: 45px;
- #   padding: 0px;
     width: 15px;
     -moz-transform: rotate(-90deg);
     text-align: center;
@@ -215,4 +228,10 @@ div#footer {
 
 .top-content {
     word-wrap: break-word
+}
+
+.post-detail {
+    position: absolute;
+    border: 1px solid #000;
+    padding: 5px;
 }
