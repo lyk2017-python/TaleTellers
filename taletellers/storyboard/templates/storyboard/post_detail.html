@@ -34,13 +34,17 @@
                 {% if story.content|slice:"-1" == "." %}
                     {{ story.content }}
                 {% else %}
-                    {{ story.content }}.
+                    {{ story.content }}
                 {% endif %}
             </a>
         {% endfor %}
         <p>
             {% for child in object.children.all %}
-                <a href="{% url 'story_detail' pk=child.pk %}">#{{ child.id }}</a> <br>
+                <div>
+                    <button type="button">
+                    <a href="{% url 'story_detail' pk=child.pk %}">#{{ child.content|truncatewords:5 }}</a> <br>
+                    </button>
+                </div>
             {% empty %}
                 </p>
                 <p><--THE END--></p>
