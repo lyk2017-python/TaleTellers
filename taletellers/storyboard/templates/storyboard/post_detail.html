@@ -27,15 +27,15 @@
                 title="Added by {{ story.author }} <span style:'align:right' class=' glyphicon glyphicon-remove' id=close_button></span>"
                 data-content='<div style="text-align:center" >
                                     <a href="..\{{ story.id }}" class="glyphicon glyphicon-copy icons" aria-hidden="true"></a>
-                                    <span style="color:#006b0d" class="glyphicon glyphicon-chevron-up icons" name={{story.id}} id="like_button" aria-hidden="true"></span>
+                                    <span style="color:#006b0d" class="glyphicon glyphicon-chevron-up icons like_dislike" name={{story.id}} id="like_button" aria-hidden="true" type="true"></span>
                                     <strong><span class="boru icons"></span>
-                                    <span style="color:#a92200" class="glyphicon glyphicon-chevron-down icons" name={{story.id}} id="dislike_button" aria-hidden="true"></span>
+                                    <span style="color:#a92200" class="glyphicon glyphicon-chevron-down icons like_dislike" name={{story.id}} id="dislike_button" aria-hidden="true" type="false"></span>
                               </div>'>
                 {{ story.content|capfirst }}
             </a>
         {% endfor %}
         <p>
-            {% if object.children.count > 0 %}
+            {% if object.children.ount > 0 %}
                 Choose a path:
             {% endif %}
             {% for child in object.children.all %}
@@ -86,11 +86,12 @@
         }
     });
     });
-    $(document).on("click", "#like_button", function() {
+    $(document).on("click", ".like_dislike", function() {
         var id = $(this).context.attributes.name.value;
+        var button_val = $(this).context.attributes.type.value;
         $.ajax({
             data: {
-                "like": "true",
+                "like": button_val,
                 "id": id
             },
             url: "{% url "like_dislike" %}",
@@ -99,20 +100,20 @@
             }
         }
     )});
-    $(document).on("click", "#dislike_button", function() {
-        var id = $(this).context.attributes.name.value;
-        $.ajax({
-            data: {
-                "like": "false",
-                "id": id
-            },
-            url: "{% url "like_dislike" %}",
-            success: function (data) {
-                $('.boru').text(data.like);
-            }
-        }
-    )}
-    );
+{#    $(document).on("click", "#dislike_button", function() {#}
+{#        var id = $(this).context.attributes.name.value;#}
+{#        $.ajax({#}
+{#            data: {#}
+{#                "like": "false",#}
+{#                "id": id#}
+{#            },#}
+{#            url: "{% url "like_dislike" %}",#}
+{#            success: function (data) {#}
+{#                $('.boru').text(data.like);#}
+{#            }#}
+{#        }#}
+{#    )}#}
+{#    );#}
     $(document).on("click", "#close_button", function() {
          $('[data-toggle="popover"]').popover("hide")
          $('[data-toggle="popover"]').popover()
