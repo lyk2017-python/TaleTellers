@@ -7,7 +7,7 @@
         <div class="col-md-offset-2 col-md-8 col-xs-offset-1 col-xs-10">
             <ul>
                 {% for post, child_date in object_list %}
-                    <div class="well well-lg row">
+                    <div class="well row">
                         <div class="col-sm-9">
                             <p>
                                 <a href="{% url 'story_detail' pk=post.pk %}" class="title">{{ post.title|title }}</a>
