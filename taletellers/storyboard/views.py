@@ -1,4 +1,3 @@
-from django.conf.global_settings import AUTH_USER_MODEL as User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Sum, F
@@ -32,14 +31,6 @@ class HomeView(generic.ListView):
         else:
             post_list = []
         return post_list
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        top_users = []
-        for i in User.objects.all():
-            top_users.append((i,  i.post.all().aggregate(Sum("score"))["score__sum"]))
-        context["top_users"] = sorted(top_users, key=lambda x: x[1], reverse=True)
-        return context
 
 
 class AddContentFormView(generic.CreateView):
@@ -221,6 +212,4 @@ def like(request):
         return HttpResponse(status=400)
     obj.refresh_from_db()
     return JsonResponse({"like": obj.score, "id": id})
-
-
 
