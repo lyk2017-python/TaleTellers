@@ -44,8 +44,6 @@ class Post(models.Model):
 
     class Meta:
         """
-        get_latest_by: ???
-
         unique_together: Tek başına eşsiz olmasalar da hepsi birlikte eşsiz olması gereken
         durumlar için kullanlır.
         """
