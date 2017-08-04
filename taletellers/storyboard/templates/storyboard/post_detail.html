@@ -40,7 +40,7 @@
         {% endfor %}
         <p>
             {% for child in object.children.all %}
-                <a href="{% url 'story_detail' pk=child.pk %}">#{{ child.id }}</a> <br>
+                <a href="{% url 'story_detail' pk=child.pk %}"># {{ child.content|truncatewords:3 }}</a> <br>
             {% empty %}
                 </p>
                 <p><--THE END--></p>

@@ -19,7 +19,6 @@ nav {
 
 .content {
     font-size: 15px;
-    padding-left: 25px;
 }
 
 .well {
@@ -211,4 +210,8 @@ div#footer {
     color: white;
     text-align: center;
     z-index: 1;
+}
+
+.top-content {
+    word-wrap: break-word
 }
