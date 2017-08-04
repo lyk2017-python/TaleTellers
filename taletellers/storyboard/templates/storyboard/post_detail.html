@@ -26,10 +26,10 @@
                 data-html="auto"
                 title="Added by {{ story.author }} <span style:'align:right' class=' glyphicon glyphicon-remove' id=close_button></span>"
                 data-content='<div style="text-align:center" >
-                                    <a href="..\{{ story.id }}" class="glyphicon glyphicon-copy" aria-hidden="true"></a>
-                                    <span style="color:#006b0d" class="glyphicon glyphicon-chevron-up" name={{story.id}} id="like_button" aria-hidden="true"></span>
-                                    <strong><span class="boru"></span>
-                                    <span style="color:#a92200" class="glyphicon glyphicon-chevron-down" name={{story.id}} id="dislike_button" aria-hidden="true"></span>
+                                    <a href="..\{{ story.id }}" class="glyphicon glyphicon-copy icons" aria-hidden="true"></a>
+                                    <span style="color:#006b0d" class="glyphicon glyphicon-chevron-up icons" name={{story.id}} id="like_button" aria-hidden="true"></span>
+                                    <strong><span class="boru icons"></span>
+                                    <span style="color:#a92200" class="glyphicon glyphicon-chevron-down icons" name={{story.id}} id="dislike_button" aria-hidden="true"></span>
                               </div>'>
                 {{ story.content|capfirst }}
             </a>
@@ -40,7 +40,7 @@
             {% endif %}
             {% for child in object.children.all %}
             <div class="post-detail">
-                <a href="{% url 'story_detail' pk=child.pk %}">{{ forloop.counter }}. {{ child.content|truncatechars:15 }} </a>| {{child.score}}
+                <a href="{% url 'story_detail' pk=child.pk %}">{{ forloop.counter }}. {{ child.content|truncatechars:15 }} </a> score: {{child.score}}
             </div><br><br>
             {% empty %}
                 </p>

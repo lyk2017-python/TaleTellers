@@ -189,6 +189,9 @@ class Top10View(generic.ListView):
 
 
 def user_like_response(request):
+    """
+    ajax ile arkaplanda tıklanan cümlenin databasedeki skorunu çekiyor
+    """
     id = request.GET.get("id", None)
     data = {
         "score": Post.objects.filter(id=id)[0].score
@@ -197,6 +200,10 @@ def user_like_response(request):
 
 
 def like(request):
+    """
+    kullanıcı beğendiğinde vya beğenmediğinde ekrandaki skoru otomatik
+    update eder
+    """
     id = request.GET.get("id", default=None)
     like = request.GET.get("like")
     obj = get_object_or_404(Post, id=int(id))

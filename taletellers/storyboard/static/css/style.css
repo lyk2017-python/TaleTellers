@@ -45,6 +45,7 @@ a:hover {
 
 .content {
     font-size: 18px;
+    padding-bottom: 15px;
 }
 
 .well {
@@ -84,6 +85,7 @@ a:hover {
 a#home,
 #navbar li a {
     color: #fff;
+    font-size: 19px;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -236,10 +238,14 @@ ul {
     position: absolute;
     border: 1px solid #000;
     padding: 5px;
-    width: 175px;
+    width: 185px;
 
 }
 
 #like-dislike {
     display: block;
+}
+
+.icons {
+    font-size: 17px;
 }
