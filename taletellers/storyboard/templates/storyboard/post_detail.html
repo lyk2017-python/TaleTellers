@@ -115,8 +115,7 @@
 {#    )}#}
 {#    );#}
     $(document).on("click", "#close_button", function() {
-         $('[data-toggle="popover"]').popover("hide")
-         $('[data-toggle="popover"]').popover()
+         $('[data-toggle="popover"]').popover("hide").popover();
 });
 </script>
 {% endblock %}
