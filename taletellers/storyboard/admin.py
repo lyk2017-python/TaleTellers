@@ -5,7 +5,7 @@ from storyboard.models import Post
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     # Admin ana panelinde görünecek olan sütunları belirler
-    list_display = ["title", "content", "score", "creation_time", "super_parent"]
+    list_display = ["content", "title", "score", "creation_time", "super_parent"]
     search_fields = ["title", "content", "super_parent"]
     # Hangi listeler ile gruplamaya izin verileceğini seçmek için
     list_filter = ["creation_time", ("super_parent", admin.RelatedOnlyFieldListFilter)]
