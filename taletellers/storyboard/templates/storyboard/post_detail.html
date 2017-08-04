@@ -24,12 +24,12 @@
                 #data-trigger="focus"
                 data-placement="top"
                 data-html="auto"
-                title="#{{ story.id }} {{ story.creation_time }} <span style:'align:right' class='glyphicon glyphicon-remove-circle' id=close_button></span>"
+                title="Added by {{ story.author }} <span style:'align:right' class=' glyphicon glyphicon-remove' id=close_button></span>"
                 data-content='<div style="text-align:center" >
                                     <a href="..\{{ story.id }}" class="glyphicon glyphicon-copy" aria-hidden="true"></a>
-                                    <span class="glyphicon glyphicon-chevron-up" name={{story.id}} id="like_button" aria-hidden="true"></span>
-                                      Score: <span class="boru"></span>
-                                    <span class="glyphicon glyphicon-chevron-down" name={{story.id}} id="dislike_button" aria-hidden="true"></span>
+                                    <span style="color:#006b0d" class="glyphicon glyphicon-chevron-up" name={{story.id}} id="like_button" aria-hidden="true"></span>
+                                    <strong><span class="boru"></span>
+                                    <span style="color:#a92200" class="glyphicon glyphicon-chevron-down" name={{story.id}} id="dislike_button" aria-hidden="true"></span>
                               </div>'>
                 {% if story.content|slice:"-1" == "." %}
                     {{ story.content }}
