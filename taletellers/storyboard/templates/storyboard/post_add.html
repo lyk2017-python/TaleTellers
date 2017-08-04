@@ -21,7 +21,6 @@
 <div class="container content-align">
     <div class="col-md-offset-2 col-md-8 col-xs-offset-1 col-xs-10">
         <ul>
-<<<<<<< HEAD
             {% for post in post_list|dictsortreversed:"id" %}
                 <div class="well row">
                     <div class="col-sm-9">
@@ -32,15 +31,6 @@
                             <p class="content">{{ post.content|truncatewords:5 }}</p>
                     </div>
                     <div class="col-sm-3">
-=======
-            {% for post in post_list %}
-                <div class="well well-lg">
-                    <li>
-                        <p>
-                            <a href="{% url 'story_detail' pk=post.pk %}" class="title">{{ post.title|title}}</a>
-                        </p>
-                        <p class="content">{{ post.content|truncatewords:5 }}</p>
->>>>>>> 24b669982eec52866b06fe89c9d14de8b358fbff
                         <div class="date">
                             {{ post.creation_time }}
                         </div>
