@@ -13,7 +13,7 @@
                 <div class="col-sm-1" id="border">
                     {{ post.author }}
                 </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-8" top-content>
                     <a href="{% url 'story_detail' pk=post.pk %}" class="title">{{ post.title|title }}</a>
                         <p>{{ post.content }}</p>
                 </div>

@@ -40,11 +40,8 @@
         {% endfor %}
         <p>
             {% for child in object.children.all %}
-                <div>
-                    <button type="button">
-                    <a href="{% url 'story_detail' pk=child.pk %}">#{{ child.content|truncatewords:5 }}</a> <br>
-                    </button>
-                </div>
+                <a href="{% url 'story_detail' pk=child.pk %}"># {{ child.content|truncatewords:3 }}</a> <br>
+
             {% empty %}
                 </p>
                 <p><--THE END--></p>
