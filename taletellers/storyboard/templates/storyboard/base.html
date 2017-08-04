@@ -37,7 +37,7 @@
                             <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                             <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                         {% else %}
-                            <li><a href="#">Merhaba, {{ request.user.username }}</a></li>
+                            <li><a href="#">Hello, {{ request.user.username }}</a></li>
                             <li><a href="{% url 'logout' %}"><span class='glyphicon glyphicon-user'></span> Log out</a></li>
                         {% endif %}
                     </ul>

@@ -46,6 +46,7 @@
             {% endfor %}
 
         <br><br>
+        {% if request.user.is_authenticated %}
         {% if object.children.count < 3 %}
             <form action="." method="POST" class="form">
                 {% csrf_token %}
@@ -54,6 +55,9 @@
             </form>
         {% else %}
             <div>You have reached the maximum amount of forks. Please read on.</div>
+        {% endif %}
+        {% else %}
+            To write a comment please Log-in!
         {% endif %}
     </div>
 </div>
