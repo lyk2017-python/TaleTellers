@@ -35,10 +35,12 @@
             </a>
         {% endfor %}
         <p>
-            Choose a path:
+            {% if object.children.count > 0 %}
+                Choose a path:
+            {% endif %}
             {% for child in object.children.all %}
             <div class="post-detail">
-                <a href="{% url 'story_detail' pk=child.pk %}">{{ forloop.counter }}. {{ child.content|truncatechars:15 }}</a>
+                <a href="{% url 'story_detail' pk=child.pk %}">{{ forloop.counter }}. {{ child.content|truncatechars:15 }} </a>| {{child.score}}
             </div><br><br>
             {% empty %}
                 </p>
