@@ -28,3 +28,8 @@ python3 -m venv .venv
 ### 1. How to deactivate the virtual enviroment?
 
     deactivate
+
+### 2. How to see the SQL queries of the migrations?
+
+    ./manage.py sqlmigrate <app_name> <migration_number>
+    ./manage.py sqlmigrate storyboard 0001
